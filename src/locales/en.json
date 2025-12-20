@@ -50,7 +50,8 @@
     "home": "Home",
     "learn": "Learn",
     "about": "About",
-    "workshop": "Workshop"
+    "workshop": "Workshop",
+    "toggleMenu": "Toggle menu"
   },
   "workshop": {
     "title": "Algorithm Workshop",

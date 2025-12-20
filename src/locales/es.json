@@ -50,7 +50,8 @@
     "home": "Inicio",
     "learn": "Aprender",
     "about": "Acerca de",
-    "workshop": "Taller"
+    "workshop": "Taller",
+    "toggleMenu": "Alternar menú"
   },
   "workshop": {
     "title": "Taller de Algoritmos",

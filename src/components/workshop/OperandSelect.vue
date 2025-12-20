@@ -30,13 +30,6 @@ function getSelectValue(operand: DslOperand | undefined): string {
   }
 
   if (operand.type === 'const') {
-    const numValue = typeof operand.value === 'number' ? operand.value : 0;
-    if (numValue === 0) {
-      return 'const:0';
-    }
-    if (numValue === 1) {
-      return 'const:1';
-    }
     return 'const:custom';
   }
 
@@ -47,9 +40,7 @@ function getSelectValue(operand: DslOperand | undefined): string {
 
 const selectedValue = computed(() => getSelectValue(props.modelValue));
 
-const isCustomConst = computed(
-  () => props.modelValue?.type === 'const' && ![0, 1].includes(props.modelValue.value as number),
-);
+const isCustomConst = computed(() => props.modelValue?.type === 'const');
 
 function handleSelectChange(event: Event): void {
   const target = event.target as HTMLSelectElement;
@@ -57,11 +48,8 @@ function handleSelectChange(event: Event): void {
   const [type, val] = value.split(':');
 
   if (type === 'const') {
-    if (val === 'custom') {
-      emit('update:modelValue', { type: 'const', value: props.modelValue?.value ?? 0 });
-    } else {
-      emit('update:modelValue', { type: 'const', value: parseInt(val ?? '0', 10) });
-    }
+    // Preserve existing const value when switching to custom, default to 0
+    emit('update:modelValue', { type: 'const', value: props.modelValue?.value ?? 0 });
   } else {
     emit('update:modelValue', { type: 'state', value: val ?? 's' });
   }
@@ -83,8 +71,6 @@ function handleConstInput(event: Event): void {
       <option v-for="variable in variables" :key="variable.name" :value="`state:${variable.name}`">
         {{ variable.name }}
       </option>
-      <option value="const:0">0</option>
-      <option value="const:1">1</option>
       <option v-if="showCustomConst" value="const:custom">
         {{ t('workshop.customConst') }}
       </option>
