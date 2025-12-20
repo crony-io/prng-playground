@@ -1,0 +1,1034 @@
+{
+  "app": {
+    "title": "PRNG School",
+    "description": "Aprende cómo los algoritmos PRNG transforman estado, semilla y entropía — interactivamente.",
+    "welcome": {
+      "badge": "Bienvenido",
+      "title": "Generador de números pseudoaleatorios",
+      "description": "Aprende cómo los algoritmos PRNG transforman estado, semilla y entropía — interactivamente."
+    }
+  },
+  "common": {
+    "generate": "Generar",
+    "copy": "Copiar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "delete": "Eliminar",
+    "loading": "Cargando...",
+    "success": "¡Éxito!",
+    "error": "Error",
+    "warning": "Advertencia",
+    "unknown": "Desconocido",
+    "unknownError": "Error desconocido"
+  },
+  "prngRunner": {
+    "errors": {
+      "algorithmNotFound": "Algoritmo \"{id}\" no encontrado",
+      "failedToInitialize": "No se pudo inicializar",
+      "invalidValue": "El generador produjo un valor inválido (NaN o infinito)",
+      "valueOutOfRange": "Valor fuera de rango [0, 1): {value}",
+      "stepFailed": "Falló el paso"
+    }
+  },
+  "theme": {
+    "selector": {
+      "aria_label": "Cambiar tema a {theme}"
+    },
+    "options": {
+      "light": "Claro",
+      "dark": "Oscuro",
+      "system": "Sistema"
+    }
+  },
+  "language": {
+    "selector": {
+      "aria_label": "Cambiar idioma a {language}"
+    }
+  },
+  "navigation": {
+    "home": "Inicio",
+    "learn": "Aprender",
+    "about": "Acerca de",
+    "workshop": "Taller"
+  },
+  "workshop": {
+    "title": "Taller de Algoritmos",
+    "description": "Crea, edita y experimenta con tus propios algoritmos PRNG",
+    "showHelp": "Ayuda",
+    "hideHelp": "Ocultar Ayuda",
+    "createNew": "Nuevo Algoritmo",
+    "algorithms": "Tus Algoritmos",
+    "noAlgorithms": "Aún no hay algoritmos. ¡Crea el primero!",
+    "untitled": "Sin título",
+    "forkedFrom": "Derivado de",
+    "fork": "Derivar",
+    "custom": "Personalizado",
+    "editor": "Editor",
+    "name": "Nombre",
+    "namePlaceholder": "Mi PRNG",
+    "algorithmDescription": "Descripción",
+    "descriptionPlaceholder": "Describe tu algoritmo...",
+    "stateVariables": "Variables de Estado",
+    "addVariable": "Agregar Variable",
+    "outputVariable": "Variable de Salida",
+    "operations": "Operaciones",
+    "addOperation": "Agregar Operación",
+    "customConst": "Personalizado...",
+    "preview": "Vista Previa",
+    "forkBuiltin": "Derivar de Predefinido",
+    "testSeed": "Semilla de Prueba",
+    "runSize": "Tamaño de Ejecución",
+    "autoDuration": "Auto (s)",
+    "moveUp": "Mover arriba",
+    "moveDown": "Mover abajo",
+    "editorModes": {
+      "visual": "Visual",
+      "code": "Código"
+    },
+    "codeEditor": {
+      "label": "Código de Operaciones",
+      "placeholder": "s = s + 1\ns = s ^ 0x9e3779b9\ns = s >>> 13\ns = rotl(s, 5)",
+      "format": "Formatear",
+      "revert": "Revertir",
+      "apply": "Aplicar",
+      "newVariables": "Se crearán nuevas variables (valor inicial 0): {vars}",
+      "errorAt": "Línea {line}, Col {column}: {message}",
+      "toast": {
+        "applied": "Aplicado",
+        "fixErrorsBeforeApply": "Corrige los errores antes de aplicar",
+        "fixErrorsBeforeFormat": "Corrige los errores antes de formatear",
+        "needOneOperation": "Agrega al menos una operación"
+      },
+      "errors": {
+        "invalid_statement": "Sentencia inválida (se espera: objetivo = expresión)",
+        "invalid_target": "Objetivo inválido: {target}",
+        "invalid_expression": "Expresión inválida",
+        "invalid_operand": "Operando inválido: {token}",
+        "invalid_number": "Número inválido: {token}",
+        "amount_must_be_number": "La cantidad de desplazamiento/rotación debe ser un número (0-31): {token}",
+        "amount_out_of_range": "Cantidad de desplazamiento/rotación fuera de rango (0-31): {amount}",
+        "unsupported_operator": "Operador no soportado: {operator}",
+        "unsupported_function": "Función no soportada",
+        "unknown": "Error desconocido"
+      }
+    },
+    "previewTabs": {
+      "state": "Estado",
+      "charts": "Gráficos",
+      "tests": "Pruebas"
+    },
+    "previewPanel": {
+      "stateEmpty": "Haz clic en {action} para generar muestras",
+      "chartsEmpty": "Ejecuta el algoritmo para ver visualizaciones"
+    },
+    "autoTests": {
+      "title": "Pruebas de Calidad",
+      "runTests": "Ejecutar Pruebas",
+      "mean": "Media",
+      "variance": "Varianza",
+      "expected": "esperado",
+      "chiSquare": "Chi-Cuadrado",
+      "bitBias": "Sesgo de Bits",
+      "pass": "PASA",
+      "warn": "ALERTA",
+      "fail": "FALLA",
+      "needSamples": "Se necesitan 1000+ muestras para ejecutar pruebas"
+    },
+    "templates": {
+      "selectTemplate": "Selecciona una plantilla para derivar:",
+      "forkAs": "Derivar como:",
+      "defaultForkName": "Mi {name}"
+    },
+    "seed": {
+      "label": "Semilla",
+      "placeholder": "Ingrese valor de semilla"
+    },
+    "sampleSize": {
+      "label": "Tamaño de Muestra"
+    },
+    "controls": {
+      "step": "Paso",
+      "run": "Ejecutar",
+      "autorun": "Auto",
+      "stop": "Detener",
+      "reset": "Reiniciar"
+    },
+    "algorithm": {
+      "recommended": "Recomendado",
+      "warnings": "Advertencias",
+      "references": "Referencias"
+    },
+    "state": {
+      "title": "Estado Interno",
+      "stepCount": "Pasos",
+      "empty": "Ejecuta un paso para ver el estado",
+      "changed": "cambió"
+    },
+    "output": {
+      "title": "Salida",
+      "lastValue": "Último Valor",
+      "noSamples": "Aún no se han generado muestras"
+    },
+    "histogram": {
+      "title": "Distribución",
+      "yAxisLabel": "conteo",
+      "empty": "Sin datos"
+    },
+    "correlation": {
+      "title": "Gráfico de Correlación",
+      "xAxisLabel": "r[i]",
+      "yAxisLabel": "r[i+1]",
+      "empty": "Se necesitan 2+ muestras"
+    },
+    "timeSeries": {
+      "title": "Serie Temporal",
+      "xAxisLabel": "muestra #",
+      "empty": "Sin datos"
+    }
+  },
+  "footer": {
+    "github": {
+      "label": "GitHub",
+      "aria_label": "Abrir repositorio de GitHub"
+    }
+  },
+  "about": {
+    "description": "Aprende cómo los algoritmos PRNG transforman estado, semilla y entropía — interactivamente."
+  },
+  "algorithms": {
+    "tags": {
+      "fast": "Rápido",
+      "modern": "Moderno",
+      "educational": "Educativo",
+      "legacy": "Legado"
+    },
+    "sfc32": {
+      "name": "SFC32",
+      "description": "Small Fast Counter - PRNG con estado de 128 bits. Pasa PractRand y BigCrush. Excelente calidad y velocidad.",
+      "recommended": "Uso general, simulaciones, juegos"
+    },
+    "mulberry32": {
+      "name": "Mulberry32",
+      "description": "PRNG minimalista con estado de 32 bits. Muy rápido, pasa pruebas gjrand. Período ~4 mil millones.",
+      "recommended": "Números aleatorios rápidos cuando el tamaño del estado importa",
+      "warning": "Puede omitir aproximadamente 1/3 de todos los valores de 32 bits"
+    },
+    "splitmix32": {
+      "name": "SplitMix32",
+      "description": "Basado en el finalizador fmix32 de MurmurHash3. Estado de 32 bits, muy rápido.",
+      "recommended": "Sembrar otros PRNGs, aplicaciones basadas en hash"
+    },
+    "xorshift32": {
+      "name": "Xorshift32",
+      "description": "Xorshift original de 32 bits de Marsaglia (2003). Estructura simple, valor educativo.",
+      "recommended": "Aprender fundamentos de PRNG",
+      "warning": "Falla muchas pruebas estadísticas modernas. No para uso en producción."
+    },
+    "xoshiro128ss": {
+      "name": "xoshiro128**",
+      "description": "Derivado moderno de Xorshift (2018). Estado de 128 bits, rápido, buena calidad.",
+      "recommended": "Uso general cuando se prefiere la familia xorshift",
+      "warning": "Tiene problemas relacionados con LFSR en bits inferiores"
+    },
+    "lcg": {
+      "name": "LCG (Park-Miller)",
+      "description": "Generador Congruencial Lineal con parámetros MINSTD. PRNG educativo clásico.",
+      "recommended": "Aprender sobre estructura y debilidades de PRNG",
+      "warning": "Falla pruebas modernas rápidamente. Solo educativo."
+    },
+    "simpleCounter": {
+      "name": "Contador Simple",
+      "description": "El peor PRNG posible - solo incrementa en 1. Completamente predecible.",
+      "recommended": "Aprender qué hace malo a un PRNG",
+      "warning": "No es aleatorio en absoluto. Solo para comparación educativa."
+    },
+    "references": {
+      "pracrand": "PractRand",
+      "mulberry32_gist": "Implementación original",
+      "splitmix_paper": "Artículo SplitMix",
+      "xorshift_paper": "Artículo Xorshift RNGs",
+      "xoshiro_paper": "Artículo Scrambled Linear PRNGs",
+      "lcg_wikipedia": "Wikipedia",
+      "park_miller": "Artículo Park-Miller"
+    }
+  },
+  "dsl": {
+    "error": {
+      "unknownVariable": "Variable desconocida: {variable}",
+      "tooManyOperations": "Demasiadas operaciones por paso",
+      "outputVariableNotFound": "Variable de salida no encontrada: {variable}",
+      "unknown": "Error desconocido"
+    },
+    "validate": {
+      "nameRequired": "Se requiere el nombre del algoritmo",
+      "stateRequired": "Se requiere al menos una variable de estado",
+      "operationRequired": "Se requiere al menos una operación",
+      "undefinedVariable": "Operación usa variable de estado indefinida: {variable}",
+      "outputVariableNotFound": "Variable de salida no encontrada: {variable}"
+    }
+  },
+  "operationDocs": {
+    "title": "Referencia de Operaciones",
+    "subtitle": "Aprende qué hace cada operación",
+    "introduction": "Estos son los bloques de construcción que usas para crear generadores de números aleatorios. Cada operación transforma números de una manera específica.",
+    "whatAreBits": {
+      "title": "¿Qué son los bits?",
+      "content": "Las computadoras almacenan números como secuencias de 0s y 1s llamados \"bits\". Por ejemplo, el número 5 se almacena como 0101 en binario. Cada posición representa una potencia de 2: la más a la derecha es 1, luego 2, luego 4, luego 8, y así sucesivamente. ¡Entender los bits te ayuda a ver cómo funcionan estas operaciones!"
+    },
+    "categories": {
+      "arithmetic": "Operaciones Matemáticas",
+      "arithmeticDesc": "Matemáticas básicas como sumar y multiplicar números",
+      "bitwise": "Operaciones de Bits",
+      "bitwiseDesc": "Operaciones que trabajan con bits individuales (0s y 1s)",
+      "shift": "Operaciones de Desplazamiento",
+      "shiftDesc": "Mueven bits a la izquierda o derecha dentro de un número",
+      "rotate": "Operaciones de Rotación",
+      "rotateDesc": "Mueven bits en círculo (no se pierde ningún bit)"
+    },
+    "operations": {
+      "add": {
+        "name": "Suma",
+        "brief": "Suma dos números",
+        "detailed": "¡Igual que las matemáticas normales! Suma dos números. Si el resultado es muy grande (más de 4 mil millones), vuelve a empezar desde 0 - como el odómetro de un auto que da la vuelta.",
+        "whyUseful": "La suma mezcla bien los números porque el acarreo (como 9+1=10) causa que los cambios se propaguen por muchos dígitos.",
+        "example": "5 + 3 = 8",
+        "exampleOverflow": "4.294.967.295 + 1 = 0 (¡da la vuelta!)"
+      },
+      "sub": {
+        "name": "Resta",
+        "brief": "Resta un número de otro",
+        "detailed": "Resta normal. Si el resultado sería negativo, da la vuelta a un número positivo grande.",
+        "whyUseful": "Similar a la suma pero al revés. Menos común en generadores aleatorios pero aún útil.",
+        "example": "5 - 3 = 2",
+        "exampleOverflow": "0 - 1 = 4.294.967.295 (¡da la vuelta!)"
+      },
+      "mul": {
+        "name": "Multiplicación",
+        "brief": "Multiplica dos números",
+        "detailed": "Multiplica dos números. Como la suma, si el resultado es muy grande, da la vuelta. La multiplicación es muy poderosa para mezclar porque afecta muchos bits a la vez.",
+        "whyUseful": "Multiplicar revuelve los bits muy efectivamente. Muchos de los mejores generadores aleatorios usan constantes de multiplicación especiales.",
+        "example": "3 × 5 = 15",
+        "exampleOverflow": "Los números grandes se ajustan para caber en 32 bits"
+      },
+      "mod": {
+        "name": "Módulo (Residuo)",
+        "brief": "Obtiene el residuo después de dividir",
+        "detailed": "Divide el primer número por el segundo y te da el residuo. Como preguntar \"¿qué sobra?\" Por ejemplo, 17 ÷ 5 = 3 residuo 2, entonces 17 mod 5 = 2.",
+        "whyUseful": "Mantiene números dentro de un rango específico. Por ejemplo, n mod 100 siempre da un resultado entre 0 y 99.",
+        "example": "17 % 5 = 2 (17 = 3×5 + 2, el residuo es 2)",
+        "exampleOverflow": "10 % 3 = 1"
+      },
+      "xor": {
+        "name": "XOR (O Exclusivo)",
+        "brief": "Invierte bits donde las entradas difieren",
+        "detailed": "Compara dos números bit por bit. Si los bits son diferentes, el resultado es 1. Si son iguales, el resultado es 0. Piénsalo como \"uno u otro, pero no ambos\".",
+        "whyUseful": "¡XOR es mágico para generadores aleatorios! Es reversible (A XOR B XOR B = A), mezcla bits sin perder información, y es muy rápido.",
+        "example": "0101 XOR 0011 = 0110",
+        "visualization": "Bit 1: ¿0≠0? No → 0 | Bit 2: ¿1≠0? Sí → 1 | Bit 3: ¿0≠1? Sí → 1 | Bit 4: ¿1≠1? No → 0"
+      },
+      "and": {
+        "name": "AND (Y)",
+        "brief": "Mantiene bits que son 1 en ambas entradas",
+        "detailed": "Compara dos números bit por bit. El resultado es 1 solo si AMBOS bits son 1. Piénsalo como \"ambos deben estar de acuerdo\".",
+        "whyUseful": "AND es genial para extraer bits específicos de un número (llamado \"enmascarar\"). Por ejemplo, n AND 255 extrae solo los últimos 8 bits.",
+        "example": "0101 AND 0011 = 0001",
+        "visualization": "Bit 1: 0 AND 0 = 0 | Bit 2: 1 AND 0 = 0 | Bit 3: 0 AND 1 = 0 | Bit 4: 1 AND 1 = 1"
+      },
+      "or": {
+        "name": "OR (O)",
+        "brief": "Activa bits que son 1 en cualquier entrada",
+        "detailed": "Compara dos números bit por bit. El resultado es 1 si CUALQUIER bit es 1. Piénsalo como \"al menos uno dice sí\".",
+        "whyUseful": "OR se usa para combinar bits o asegurar que ciertos bits estén activados. Menos común en generadores aleatorios que XOR.",
+        "example": "0101 OR 0011 = 0111",
+        "visualization": "Bit 1: 0 OR 0 = 0 | Bit 2: 1 OR 0 = 1 | Bit 3: 0 OR 1 = 1 | Bit 4: 1 OR 1 = 1"
+      },
+      "not": {
+        "name": "NOT (Invertir Todos los Bits)",
+        "brief": "Invierte cada bit",
+        "detailed": "Invierte cada bit en el número. Todos los 0s se vuelven 1s, y todos los 1s se vuelven 0s. Solo necesita una entrada.",
+        "whyUseful": "NOT crea el \"opuesto\" de un número. Rara vez se usa solo pero puede combinarse con otras operaciones.",
+        "example": "NOT 0101 = 1010",
+        "visualization": "Cada bit se invierte: 0→1 y 1→0"
+      },
+      "shl": {
+        "name": "Desplazar a la Izquierda",
+        "brief": "Mueve todos los bits a la izquierda",
+        "detailed": "Mueve todos los bits a la izquierda un cierto número de posiciones. Los espacios vacíos a la derecha se llenan con 0s. Los bits que salen por la izquierda se pierden.",
+        "whyUseful": "Desplazar a la izquierda multiplica por potencias de 2. Desplazar 1 a la izquierda = multiplicar por 2. También es útil para mover bits a diferentes posiciones.",
+        "example": "0001 << 2 = 0100 (desplazado 2 posiciones a la izquierda)",
+        "visualization": "Original: 00000001 → Después de << 2: 00000100"
+      },
+      "shr": {
+        "name": "Desplazar a la Derecha (Con Signo)",
+        "brief": "Mueve bits a la derecha, manteniendo el signo",
+        "detailed": "Mueve todos los bits a la derecha. El bit más a la izquierda (bit de signo) se copia para llenar espacios vacíos. Esto preserva si el número es positivo o negativo.",
+        "whyUseful": "Divide por potencias de 2 manteniendo el signo. Menos común en generadores aleatorios que el desplazamiento sin signo.",
+        "example": "1000 >> 2 = 1110 (el bit de signo se propaga)",
+        "visualization": "Para números negativos, 1s llenan desde la izquierda"
+      },
+      "ushr": {
+        "name": "Desplazar a la Derecha (Sin Signo)",
+        "brief": "Mueve bits a la derecha, llenando con ceros",
+        "detailed": "Mueve todos los bits a la derecha y siempre llena espacios vacíos con 0s. Trata el número como positivo sin importar el bit más a la izquierda.",
+        "whyUseful": "La mayoría de generadores aleatorios usan esto porque trabajan con patrones de bits, no números con signo. ¡Operación muy común!",
+        "example": "1000 >>> 2 = 0010 (ceros llenan desde la izquierda)",
+        "visualization": "Original: 10000000 → Después de >>> 2: 00100000"
+      },
+      "rotl": {
+        "name": "Rotar a la Izquierda",
+        "brief": "Rota bits a la izquierda (dan la vuelta)",
+        "detailed": "Como desplazar a la izquierda, pero los bits que salen por la izquierda vuelven por la derecha. ¡Nunca se pierde información - los bits solo se mueven en círculo!",
+        "whyUseful": "La rotación mezcla bits excelentemente sin perder ninguno. Muchos generadores aleatorios modernos usan rotación porque es rápida y efectiva.",
+        "example": "1001 rotl 1 = 0011 (el 1 de la izquierda pasa a la derecha)",
+        "visualization": "Los bits se mueven en círculo: lado izquierdo → lado derecho"
+      },
+      "rotr": {
+        "name": "Rotar a la Derecha",
+        "brief": "Rota bits a la derecha (dan la vuelta)",
+        "detailed": "Como desplazar a la derecha, pero los bits que salen por la derecha vuelven por la izquierda. Igual que rotar a la izquierda pero en dirección opuesta.",
+        "whyUseful": "Mismos beneficios que rotar a la izquierda. Combinado con XOR y suma, la rotación crea una mezcla muy fuerte.",
+        "example": "1001 rotr 1 = 1100 (el 1 de la derecha pasa a la izquierda)",
+        "visualization": "Los bits se mueven en círculo: lado derecho → lado izquierdo"
+      }
+    },
+    "tips": {
+      "title": "Consejos para Construir PRNGs",
+      "tip1": "Combina diferentes tipos de operaciones (suma + XOR + desplazamiento) para mejor mezcla",
+      "tip2": "Usa \"números mágicos\" específicos como constantes - han sido probados para funcionar bien",
+      "tip3": "Asegúrate de que cada bit se mezcle eventualmente - no dejes algunos bits sin cambiar",
+      "tip4": "Prueba tu generador con las pestañas de Gráficos y Pruebas para ver si es suficientemente aleatorio"
+    },
+    "tryIt": "¡Pruébalo!",
+    "learnMore": "Aprender más",
+    "showDetails": "Mostrar detalles",
+    "hideDetails": "Ocultar detalles"
+  },
+  "learn": {
+    "title": "El Misterio de los Números Mágicos",
+    "subtitle": "Aprende cómo las computadoras crean números que parecen aleatorios",
+    "resetProgress": "Reiniciar Progreso",
+    "confirmReset": "¿Estás seguro de que quieres reiniciar todo tu progreso de aprendizaje?",
+    "completePrerequisites": "Completa el mundo anterior para desbloquear",
+    "workshopUnlocked": {
+      "title": "¡Taller Desbloqueado!",
+      "description": "Has ganado acceso al Taller completo. ¡Experimenta libremente!"
+    },
+    "worlds": {
+      "world1": {
+        "title": "Mundo 1: Los Números que Recuerdan",
+        "description": "Aprende sobre estado, memoria y variables",
+        "badge": "Guardián de Números"
+      },
+      "world2": {
+        "title": "Mundo 2: Las Reglas Secretas",
+        "description": "Aprende sobre multiplicación, módulo y combinación de operaciones",
+        "badge": "Mezclador de Recetas"
+      },
+      "world2_5": {
+        "title": "Mundo 2.5: Puente a los Bits",
+        "description": "Introducción al pensamiento binario",
+        "badge": "Explorador Binario"
+      },
+      "world3": {
+        "title": "Mundo 3: La Danza de los Bits",
+        "description": "Domina operaciones binarias como shift y XOR",
+        "badge": "Maestro de Bits"
+      },
+      "world4": {
+        "title": "Mundo 4: Constructores Maestros",
+        "description": "Bifurca y modifica algoritmos PRNG reales",
+        "badge": "Ingeniero de Aleatoriedad"
+      },
+      "world5": {
+        "title": "Mundo 5: Laboratorio Avanzado",
+        "description": "Algoritmos multi-estado y técnicas avanzadas",
+        "badge": "Investigador"
+      }
+    },
+    "lessons": {
+      "lesson1_1": {
+        "title": "El Número Dormido",
+        "objective": "Entender el concepto de variable/estado",
+        "narrative": "Imagina que tienes una caja mágica. Dentro hay un número. Ese número está esperando... ¿esperando qué?",
+        "completion": "¡Descubriste que los números pueden guardarse!",
+        "quiz": {
+          "q1": {
+            "question": "Si dos cajas empiezan con el mismo número, ¿siempre producirán la misma secuencia?",
+            "optionA": "No, cada caja crea sus propios números aleatorios",
+            "optionB": "Sí, el mismo número inicial siempre da los mismos resultados",
+            "optionC": "Depende del clima",
+            "correct": "¡Exacto! Esto se llama DETERMINISMO - la misma entrada siempre da la misma salida.",
+            "incorrect": "Piénsalo: si la caja sigue las mismas reglas y empieza igual..."
+          }
+        }
+      },
+      "lesson1_2": {
+        "title": "La Semilla Mágica",
+        "objective": "Entender que el estado inicial importa",
+        "narrative": "¿Y si pudieras elegir con qué número empieza la caja? Ese número especial se llama SEMILLA.",
+        "engagement": "¡Rápido! Piensa en tu número favorito entre 1 y 100.",
+        "completion": "¡Aprendiste sobre las semillas!",
+        "quiz": {
+          "q1": {
+            "question": "¿Qué es una semilla?",
+            "optionA": "Una planta",
+            "optionB": "El número con el que empieza la caja",
+            "optionC": "Un tipo de magia",
+            "correct": "¡Exacto! La semilla es el número inicial.",
+            "incorrect": "Piensa en qué número ponemos primero en la caja."
+          }
+        }
+      },
+      "lesson1_3": {
+        "title": "El Contador Aburrido",
+        "objective": "Primera transformación (suma simple)",
+        "narrative": "Ahora tu caja puede hacer algo: ¡CONTAR! Cada vez que presionas el botón, el número crece.",
+        "completion": "Esto es PREDECIBLE. ¿Será así el azar verdadero?",
+        "quiz": {
+          "q1": {
+            "question": "¿Podría tu amigo predecir el siguiente número de este contador?",
+            "optionA": "Sí, siempre es el número actual más 1",
+            "optionB": "No, es imposible adivinarlo",
+            "correct": "¡Exacto! Un contador simple es completamente PREDECIBLE - ¡terrible para la aleatoriedad!",
+            "incorrect": "Observa el patrón: 1, 2, 3, 4... ¿puedes adivinar qué sigue?"
+          }
+        }
+      },
+      "lesson1_4": {
+        "title": "¿Dónde está el Misterio?",
+        "objective": "Identificar que la suma simple NO es aleatoria",
+        "narrative": "Comparemos dos generadores de números diferentes...",
+        "completion": "Has aprendido que los números pueden recordar y cambiar, pero solo sumar es muy aburrido. Necesitamos REGLAS MÁS INTERESANTES...",
+        "quiz": {
+          "q1": {
+            "question": "¿Por qué no podemos usar un contador simple para un juego de dados?",
+            "optionA": "Los contadores son muy lentos",
+            "optionB": "Los contadores solo llegan hasta 6",
+            "optionC": "Los jugadores podrían predecir fácilmente el próximo tiro",
+            "correct": "¡Correcto! La predictibilidad es enemiga de los juegos justos. ¡Necesitamos números impredecibles!",
+            "incorrect": "Piensa qué pasaría si tu oponente conociera el patrón..."
+          }
+        }
+      },
+      "lesson2_1": {
+        "title": "Multiplicación Explosiva",
+        "objective": "Ver cómo la multiplicación crea cambios dramáticos",
+        "narrative": "Sumar es como caminar. Multiplicar es como... ¡SALTAR!",
+        "completion": "¡Descubriste que la multiplicación hace crecer los números mucho más rápido!",
+        "quiz": {
+          "q1": {
+            "question": "Si multiplicas por 1 en cada paso, ¿qué pasa con la aleatoriedad?",
+            "optionA": "Aleatoriedad perfecta",
+            "optionB": "Aleatoriedad más lenta",
+            "optionC": "¡Ningún cambio - terrible para la aleatoriedad!",
+            "correct": "¡Correcto! Multiplicar por 1 no hace nada - el número nunca cambia. ¡Inútil!",
+            "incorrect": "Piensa: ¿qué es cualquier número por 1?"
+          }
+        }
+      },
+      "lesson2_2": {
+        "title": "El Problema del Número Gigante",
+        "objective": "Entender el desbordamiento y los límites de memoria",
+        "narrative": "¿Qué pasa si multiplicamos tantas veces que el número ya no cabe?",
+        "completion": "Las computadoras tienen cajas de tamaño fijo. ¡Cuando se desbordan, dan la vuelta como un reloj!",
+        "quiz": {
+          "q1": {
+            "question": "¡El número se desbordó y dio la vuelta! ¿Es esto un error o una característica para PRNGs?",
+            "optionA": "Un error - deberíamos arreglarlo",
+            "optionB": "¡Una característica - ayuda a crear patrones impredecibles!",
+            "correct": "¡Exacto! El desbordamiento es ÚTIL porque mezcla el número de formas inesperadas.",
+            "incorrect": "Piensa: ¿el desbordamiento hace los números más o menos predecibles?"
+          }
+        }
+      },
+      "lesson2_3": {
+        "title": "El Cortador (Módulo)",
+        "objective": "Entender el operador módulo",
+        "narrative": "¿Y si queremos un número que nunca pase de 10? Usamos EL CORTADOR.",
+        "completion": "¡El operador módulo recorta los números a su tamaño!",
+        "quiz": {
+          "q1": {
+            "question": "¿Por qué los PRNGs usan números primos (como 7, 13, 31) en vez de números redondos (como 10, 100)?",
+            "optionA": "Los números primos son más bonitos",
+            "optionB": "Los primos crean patrones menos obvios y ciclos más largos",
+            "optionC": "Los números redondos son muy grandes",
+            "correct": "¡Correcto! Los primos ayudan a evitar patrones repetitivos que harían la salida predecible.",
+            "incorrect": "Piensa en qué hace que una secuencia se sienta 'aleatoria' vs 'con patrón'..."
+          }
+        }
+      },
+      "lesson2_4": {
+        "title": "Mezclando Recetas",
+        "objective": "Combinar operaciones (multiplicar + sumar)",
+        "narrative": "¿Qué pasa si usamos DOS reglas al mismo tiempo?",
+        "completion": "¡Combinar operaciones crea patrones más interesantes!",
+        "quiz": {
+          "q1": {
+            "question": "DEPURAR: Esta receta produce 0, 0, 0, 0... ¿Qué está mal?\n\nestado = estado × 2\nestado = estado × 0",
+            "optionA": "La multiplicación por 2 está mal",
+            "optionB": "¡Multiplicar por 0 destruye todo!",
+            "optionC": "Necesitamos agregar más pasos",
+            "correct": "¡Exacto! Cualquier cosa por 0 es igual a 0. ¡Una mala operación puede arruinar todo!",
+            "incorrect": "¿Qué pasa cuando multiplicas CUALQUIER número por 0?",
+            "hint1": "Intenta calcular: 5 × 2 × 0 = ?"
+          }
+        }
+      },
+      "lesson2_5": {
+        "title": "LCG: Tu Primer Generador Real",
+        "objective": "Explorar un generador lineal real mediante fork",
+        "narrative": "Los científicos descubrieron una receta especial llamada LCG. ¡Modifiquemos uno real!",
+        "completion": "¡Has explorado un algoritmo PRNG real!",
+        "quiz": {
+          "q1": {
+            "question": "Intenta cambiar el multiplicador del LCG de 1664525 a solo 2. ¿Qué pasa con la calidad de salida?",
+            "optionA": "La salida se ve igual - cualquier multiplicador funciona bien",
+            "optionB": "La salida empeora - el número original fue elegido cuidadosamente por matemáticos",
+            "correct": "¡Exacto! Esas constantes específicas (como 1664525) fueron probadas extensivamente. ¡Los números que parecen aleatorios suelen funcionar mejor que los simples!",
+            "incorrect": "Mira el histograma y el gráfico de correlación después de cambiar el multiplicador. ¿Los patrones parecen aleatorios?"
+          }
+        }
+      },
+      "lesson2_5_1": {
+        "title": "El Juego de Adivinar",
+        "objective": "Descubrir cómo las preguntas sí/no encuentran números rápido",
+        "narrative": "¿Sabías que las computadoras solo entienden dos cosas? SÍ y NO. ¡Eso es todo! Juguemos un juego de adivinanzas - tú eliges un número y yo lo encontraré usando solo preguntas de sí/no. ¡Mira qué rápido lo reducimos!",
+        "completion": "¡Con solo preguntas de sí/no puedes encontrar cualquier número! Esta es la base del pensamiento binario.",
+        "quiz": {
+          "q1": {
+            "question": "Para encontrar un número del 1 al 16, ¿qué estrategia es más rápida?",
+            "optionA": "Preguntar '¿Es el 1? ¿Es el 2? ¿Es el 3?...' uno por uno (hasta 16 preguntas)",
+            "optionB": "Preguntar '¿Es mayor que 8?' y seguir dividiendo a la mitad (solo 4 preguntas)",
+            "optionC": "Adivinar al azar",
+            "correct": "¡Exacto! Dividir a la mitad es mucho más rápido: 16→8→4→2→1 en solo 4 pasos!",
+            "incorrect": "Piénsalo: verificar uno por uno podría tomar 16 intentos. ¿Cuántas divisiones a la mitad para ir de 16 a 1?"
+          }
+        }
+      },
+      "lesson2_5_2": {
+        "title": "Números con Interruptores",
+        "objective": "Introducir representación binaria de 4 bits",
+        "narrative": "Imagina 4 interruptores. Cada uno puede estar ENCENDIDO o APAGADO. ¡Juntos forman un número!",
+        "completion": "¡Puedes representar cualquier número del 0 al 15 con solo 4 interruptores!",
+        "quiz": {
+          "q1": {
+            "question": "Si cambias solo UN bit, ¿cuánto puede cambiar el número?",
+            "optionA": "¡Mucho! El bit de la izquierda cambia el número en 8",
+            "optionB": "Siempre cambia exactamente en 1",
+            "correct": "¡Correcto! La posición importa - cambiar el bit izquierdo cambia en 8, el derecho en 1!",
+            "incorrect": "Intenta cambiar diferentes bits y observa qué pasa con el número."
+          }
+        }
+      },
+      "lesson2_5_3": {
+        "title": "Más Interruptores, Números Más Grandes",
+        "objective": "Expandir a 8 bits, vista previa de 32 bits",
+        "narrative": "¿Y si tuviéramos MÁS interruptores? ¡Podríamos hacer números MÁS GRANDES!",
+        "completion": "Ahora entiendes cómo las computadoras ven los números. ¡Es hora de aprender a BAILAR con los bits!",
+        "quiz": {
+          "q1": {
+            "question": "Con 32 bits, las computadoras pueden almacenar más de 4 MIL MILLONES de números diferentes. ¿Es suficiente para un juego?",
+            "optionA": "No, los juegos necesitan más números",
+            "optionB": "¡Sí! 4 mil millones de estados significa que los patrones no se repetirán por mucho tiempo",
+            "correct": "¡Exacto! 4 mil millones de posibilidades significa que un jugador nunca vería el patrón repetirse.",
+            "incorrect": "Piensa cuánto tiempo tomaría contar hasta 4 mil millones..."
+          }
+        }
+      },
+      "lesson3_1": {
+        "title": "El Desplazamiento (Moviendo Bits)",
+        "objective": "Entender el desplazamiento de bits",
+        "narrative": "¿Qué pasa si EMPUJAMOS todos los interruptores hacia la izquierda?",
+        "completion": "¡Desplazar a la izquierda es como multiplicar por 2, pero más rápido para las computadoras!",
+        "quiz": {
+          "q1": {
+            "question": "¿Por qué el desplazamiento de bits podría ser MEJOR que la multiplicación para un PRNG?",
+            "optionA": "El desplazamiento es más lento pero más preciso",
+            "optionB": "El desplazamiento es extremadamente rápido - las computadoras lo hacen en un ciclo de reloj",
+            "optionC": "El desplazamiento hace patrones más bonitos",
+            "correct": "¡Exacto! La velocidad importa para los PRNGs - ¡pueden ser llamados millones de veces!",
+            "incorrect": "Piensa en qué hace a un buen PRNG: calidad Y velocidad."
+          }
+        }
+      },
+      "lesson3_2": {
+        "title": "XOR: El Detector de Diferencias",
+        "objective": "Entender la operación XOR",
+        "narrative": "XOR es una regla especial: compara dos bits y verifica si son DIFERENTES.",
+        "completion": "¡XOR tiene una propiedad mágica: hacerlo dos veces te devuelve al original!",
+        "quiz": {
+          "q1": {
+            "question": "XOR dos veces con el mismo número devuelve el original. ¿Cómo podría ser útil esto?",
+            "optionA": "No es útil en absoluto",
+            "optionB": "Puedes usarlo para 'ocultar' y 'revelar' datos - ¡como encriptación simple!",
+            "correct": "¡Correcto! XOR se usa en encriptación, checksums y mezcla de bits en PRNGs.",
+            "incorrect": "Piensa: si A XOR B XOR B = A, ¿qué puedes hacer con esa propiedad?"
+          }
+        }
+      },
+      "lesson3_3": {
+        "title": "La Mezcla Perfecta",
+        "objective": "Combinar shift y XOR",
+        "narrative": "Los magos de los números descubrieron algo: si desplazas Y mezclas con XOR, ¡los números BAILAN!",
+        "completion": "¡Un pequeño cambio en la entrada crea un GRAN cambio en la salida!",
+        "quiz": {
+          "q1": {
+            "question": "¿Por qué combinamos shift y XOR?",
+            "optionA": "Hace los números más pequeños",
+            "optionB": "Crea cambios más impredecibles",
+            "correct": "¡Exacto! La combinación mezcla los bits efectivamente.",
+            "incorrect": "Piensa cómo cada operación afecta el patrón."
+          }
+        }
+      },
+      "lesson3_4": {
+        "title": "Xorshift: Tu Segundo Generador Real",
+        "objective": "Explorar Xorshift mediante fork",
+        "narrative": "Ahora trabajemos con un generador profesional que usa lo que aprendiste.",
+        "completion": "¡Has dominado las operaciones más poderosas. Es hora de construir generadores PROFESIONALES!",
+        "quiz": {
+          "q1": {
+            "question": "DEPURAR: Este Xorshift produce líneas diagonales visibles en el gráfico de correlación. ¿Qué valor de desplazamiento probablemente está mal?",
+            "optionA": "El primer desplazamiento (muy pequeño)",
+            "optionB": "El desplazamiento del medio - probablemente no está mezclando los bits suficiente",
+            "optionC": "El último desplazamiento (muy grande)",
+            "correct": "¡Correcto! La mala mezcla a menudo viene de operaciones del medio que no dispersan bien los bits.",
+            "incorrect": "Las líneas diagonales significan que los números consecutivos están muy relacionados. ¿Qué lo arregla?",
+            "hint1": "Los problemas de correlación usualmente significan que los bits no se están mezclando bien."
+          }
+        }
+      },
+      "lesson4_1": {
+        "title": "Mulberry32: La Máquina Industrial",
+        "objective": "Explorar un algoritmo de producción real mediante fork",
+        "narrative": "Este es Mulberry32, un generador usado en aplicaciones profesionales. ¡Explorémoslo!",
+        "completion": "¡Has analizado un PRNG de grado profesional!",
+        "quiz": {
+          "q1": {
+            "question": "¿Cuántos tipos de operaciones usa Mulberry32?",
+            "optionA": "Solo una (suma)",
+            "optionB": "Dos (suma y multiplicación)",
+            "optionC": "Cuatro (suma, xor, shift, multiplicación)",
+            "correct": "¡Correcto! Combina múltiples operaciones para mejor mezcla.",
+            "incorrect": "Mira el algoritmo - usa suma, xor, shift y multiplicación."
+          }
+        }
+      },
+      "lesson4_2": {
+        "title": "El Laboratorio de Calidad",
+        "objective": "Usar el conjunto completo de pruebas",
+        "narrative": "Los científicos usan pruebas especiales para verificar si los números parecen verdaderamente aleatorios. ¡Usémoslas!",
+        "completion": "¡Ahora sabes cómo evaluar cualquier generador científicamente!",
+        "quiz": {
+          "q1": {
+            "question": "¿Qué algoritmo pasa todas las pruebas de calidad?",
+            "optionA": "Contador simple",
+            "optionB": "Mulberry32",
+            "correct": "¡Sí! Mulberry32 pasa todas las pruebas mientras el contador falla en todas.",
+            "incorrect": "Revisa los resultados de las pruebas para cada algoritmo."
+          }
+        }
+      },
+      "lesson4_3": {
+        "title": "El Desafío del Diseñador",
+        "objective": "Crear tu propio generador",
+        "narrative": "¡Ahora es TU turno de diseñar un generador de números!",
+        "completion": "¡Has creado tu propio algoritmo PRNG!"
+      },
+      "lesson4_4": {
+        "title": "La Galería de Generadores",
+        "objective": "Comparar todos los algoritmos aprendidos",
+        "narrative": "Veamos cómo se comparan todos los generadores que hemos aprendido.",
+        "completion": "¡Felicitaciones! Entiendes cómo las computadoras crean números que parecen aleatorios. ¡Taller desbloqueado!",
+        "quiz": {
+          "q1": {
+            "question": "¿Qué hace un buen PRNG?",
+            "optionA": "Usar operaciones simples",
+            "optionB": "Pasar pruebas de calidad y ser eficiente",
+            "correct": "¡Exacto! Un buen PRNG equilibra calidad con rendimiento.",
+            "incorrect": "Piensa tanto en la calidad de aleatoriedad como en la velocidad."
+          }
+        }
+      },
+      "lesson5_1": {
+        "title": "Algoritmos Multi-Estado",
+        "objective": "Entender algoritmos con múltiples variables de estado",
+        "narrative": "¿Y si usáramos MÚLTIPLES cajas en vez de una?",
+        "completion": "¡Múltiples variables de estado hacen los algoritmos más difíciles de predecir!",
+        "quiz": {
+          "q1": {
+            "question": "¿Por qué los algoritmos avanzados usan múltiples variables de estado?",
+            "optionA": "Es más simple",
+            "optionB": "Más difícil de predecir, período más largo",
+            "optionC": "Es más rápido",
+            "correct": "¡Correcto! Múltiples variables interactúan de formas complejas.",
+            "incorrect": "Piensa cómo 4 variables pueden interactuar vs solo 1."
+          }
+        }
+      },
+      "lesson5_2": {
+        "title": "xoshiro128**: El Moderno",
+        "objective": "Explorar algoritmos modernos",
+        "narrative": "Este algoritmo fue creado en 2018 por Blackman y Vigna. ¡Es de última generación!",
+        "completion": "¡Has explorado uno de los algoritmos PRNG más modernos!",
+        "quiz": {
+          "q1": {
+            "question": "¿Qué hace especial a xoshiro128**?",
+            "optionA": "128 bits de estado y excelente calidad",
+            "optionB": "Es muy lento",
+            "correct": "¡Sí! Usa 128 bits y pasa pruebas rigurosas.",
+            "incorrect": "Piensa en su tamaño de estado y calidad."
+          }
+        }
+      },
+      "lesson5_3": {
+        "title": "Interpretación Avanzada de Pruebas",
+        "objective": "Entender profundamente los resultados de las pruebas de calidad",
+        "narrative": "Aprendamos qué mide realmente cada prueba y qué significan los fallos.",
+        "completion": "¡Ahora puedes interpretar resultados de pruebas como un verdadero criptógrafo!",
+        "quiz": {
+          "q1": {
+            "question": "¿Qué mide la prueba de sesgo de bits?",
+            "optionA": "Qué tan rápido es el algoritmo",
+            "optionB": "Si cada bit tiene 50% de probabilidad de estar ENCENDIDO",
+            "optionC": "El valor promedio de salida",
+            "correct": "¡Correcto! Cada bit debe ser igualmente probable de ser 0 o 1.",
+            "incorrect": "Piensa qué significa 'sesgo' para bits individuales."
+          }
+        }
+      },
+      "lesson5_4": {
+        "title": "Tu Proyecto Final",
+        "objective": "Crear un generador original y documentarlo",
+        "narrative": "Es hora de mostrar todo lo que has aprendido. ¡Crea tu obra maestra!",
+        "completion": "🏆 ¡Felicitaciones! ¡Has completado el curso avanzado y creado tu propio algoritmo documentado!"
+      }
+    },
+    "microTeaching": {
+      "counting": {
+        "concept": "Contar",
+        "content": "Cuenta las manzanas: 🍎🍎🍎🍎🍎 = ?",
+        "insight": "¡Sumar significa contar hacia arriba!"
+      },
+      "multiplication": {
+        "concept": "Multiplicación",
+        "content": "Antes de saltar, ¡aprendamos qué significa multiplicar!",
+        "insight": "¡La multiplicación es suma repetida, pero MÁS RÁPIDA!"
+      },
+      "remainder": {
+        "concept": "Residuos",
+        "content": "¡Aprendamos sobre los sobrantes! 7 dulces para 3 amigos...",
+        "insight": "¡El residuo es lo que queda después de dividir equitativamente!"
+      },
+      "xor": {
+        "concept": "XOR (O Exclusivo)",
+        "content": "XOR compara dos bits: si son DIFERENTES, el resultado es 1. Si son IGUALES, el resultado es 0.",
+        "insight": "¿Diferentes? ENCENDIDO. ¿Iguales? APAGADO. ¡Es como un detector de diferencias!"
+      },
+      "shift": {
+        "concept": "Desplazamiento de Bits",
+        "content": "Mover todos los bits a la izquierda o derecha, como deslizar fichas en un tablero.",
+        "insight": "¡Desplazar a la izquierda = multiplicar por 2. Desplazar a la derecha = dividir por 2!"
+      },
+      "binary": {
+        "concept": "Números Binarios",
+        "content": "Las computadoras usan solo ENCENDIDO y APAGADO (1 y 0) para representar todos los números.",
+        "insight": "¡Con solo 8 interruptores puedes representar 256 números diferentes!"
+      }
+    },
+    "microTeachingLabel": "Mini Lección",
+    "badges": {
+      "collection": "Tus Insignias",
+      "earnedOn": "Obtenido el {date}",
+      "numberKeeper": {
+        "name": "Guardián de Números",
+        "alt": "Insignia de Guardián de Números - Una medalla púrpura con una caja que contiene el número 42",
+        "description": "¡Descubriste que los números pueden guardarse!"
+      },
+      "recipeMixer": {
+        "name": "Mezclador de Recetas",
+        "alt": "Insignia de Mezclador de Recetas - Una medalla naranja con un tazón de mezcla y símbolos matemáticos",
+        "description": "¡Aprendiste a combinar operaciones para crear recetas de números!"
+      },
+      "binaryExplorer": {
+        "name": "Explorador Binario",
+        "alt": "Insignia de Explorador Binario - Una medalla verde con dígitos binarios e interruptores",
+        "description": "¡Entiendes cómo las computadoras ven los números como bits!"
+      },
+      "bitMaster": {
+        "name": "Maestro de Bits",
+        "alt": "Insignia de Maestro de Bits - Una medalla azul con círculos XOR y flechas de desplazamiento",
+        "description": "¡Dominaste el baile de bits con XOR y desplazamientos!"
+      },
+      "randomnessEngineer": {
+        "name": "Ingeniero de Aleatoriedad",
+        "alt": "Insignia de Ingeniero de Aleatoriedad - Una medalla ámbar con un engranaje y llave",
+        "description": "¡Puedes construir y probar generadores de números aleatorios profesionales!"
+      },
+      "researcher": {
+        "name": "Investigador",
+        "alt": "Insignia de Investigador - Una medalla dorada con lupa, gráfico y documento",
+        "description": "¡Dominaste algoritmos avanzados y completaste el curso completo!"
+      }
+    },
+    "operationTrace": {
+      "title": "Traza Paso a Paso"
+    },
+    "comparison": {
+      "title": "Comparación de Algoritmos"
+    },
+    "worldLesson": "Mundo {world} · Lección {lesson}",
+    "continue": "Continuar",
+    "previous": "Anterior",
+    "finish": "Finalizar",
+    "checkAnswer": "Verificar Respuesta",
+    "nextQuestion": "Siguiente Pregunta",
+    "enterAnswer": "Ingresa tu respuesta",
+    "activities": {
+      "wakeUp": "Despertar el número",
+      "enterNumber": "Ingresa un número...",
+      "yourNumber": "¡Ese es TU número especial: {number}!",
+      "seed": "Semilla",
+      "currentNumber": "Número actual",
+      "nextNumber": "Siguiente número",
+      "reset": "Reiniciar",
+      "counter": "Contador Simple",
+      "counterDesc": "Solo suma 1 cada vez (¡predecible!)",
+      "professional": "Generador Profesional",
+      "algorithmDesc": "Usa mezcla matemática",
+      "stepBoth": "Avanzar Ambos",
+      "comparisonIntro": "Compara un contador simple con un algoritmo PRNG real. ¡Nota la diferencia de patrón!",
+      "comparisonHint": "El contador muestra una línea diagonal (predecible). Los buenos PRNGs muestran puntos dispersos (impredecibles).",
+      "overflowExplanation": "¡Cuando multiplicamos más allá de {max}, el número da la vuelta!",
+      "multiply": "Multiplicar ×{n}",
+      "forkExplore": "Explora este algoritmo modificando sus constantes y observando los resultados.",
+      "forkExploreAlgorithm": "Algoritmo:",
+      "forkExploreHint": "Intenta cambiar las constantes. ¡Observa cómo cambia la calidad!",
+      "forkExploreHintLcg": "Intenta cambiar el multiplicador y la constante de suma. ¡Diferentes valores crean diferentes patrones!",
+      "forkExploreHintXorshift": "Intenta cambiar las cantidades de desplazamiento (13, 17, 5). ¡Observa cómo la mezcla de bits afecta la aleatoriedad!",
+      "forkExploreHintMulberry": "Experimenta con la constante mágica y observa cómo cambia la calidad de salida.",
+      "forkExploreHintMultiState": "Este algoritmo tiene múltiples variables de estado. ¡Observa cómo interactúan juntas!",
+      "algorithmExplorer": {
+        "state": "Estado Actual",
+        "output": "Salida",
+        "step": "Paso",
+        "timeSeries": "Salida en el Tiempo",
+        "correlation": "Gráfico de Correlación",
+        "steps": "{count} pasos generados"
+      },
+      "qualityLab": {
+        "title": "Laboratorio de Calidad",
+        "intro": "Ejecuta pruebas en diferentes algoritmos para ver cuáles producen mejores números aleatorios.",
+        "runTests": "Ejecutar Pruebas",
+        "comparing": "Comparando algoritmos...",
+        "testMean": "Prueba de Media",
+        "testVariance": "Prueba de Varianza",
+        "testChiSquare": "Prueba Chi-Cuadrado",
+        "passed": "APROBADO",
+        "failed": "FALLIDO"
+      },
+      "designerChallenge": {
+        "title": "Desafío de Diseño",
+        "intro": "¡Crea tu propio generador que pase todas las pruebas!",
+        "challenge1": "Pasar la prueba del histograma",
+        "challenge2": "Usar 5 o menos operaciones",
+        "challenge3": "Pasar todas las pruebas de calidad",
+        "completed": "¡Desafío completado!",
+        "tryAgain": "¡Sigue intentando!"
+      },
+      "testInterpretation": {
+        "title": "Entendiendo los Resultados",
+        "intro": "Aprende qué mide cada prueba y qué significan los fallos.",
+        "meanExplain": "La prueba de Media verifica si tus números promedian 0.5 (el medio del rango 0-1).",
+        "varianceExplain": "La Varianza mide qué tan dispersos están tus números.",
+        "chiSquareExplain": "Chi-Cuadrado verifica si los números están distribuidos uniformemente en todos los rangos."
+      },
+      "finalProject": {
+        "title": "Tu Proyecto Final",
+        "intro": "¡Diseña y documenta tu propio algoritmo PRNG!",
+        "buildAlgorithm": "Construye tu algoritmo eligiendo operaciones:",
+        "qualityScore": "Puntuación de Calidad",
+        "steps": "{count} pasos generados"
+      },
+      "binaryGame": {
+        "thinkOfNumber": "Piensa en un número entre 1 y 16. ¡Lo encontraré con solo preguntas de sí/no!",
+        "range": "Elige cualquier número del {min} al {max}",
+        "question": "¿Tu número es mayor que {mid}?",
+        "yes": "Sí",
+        "no": "No",
+        "found": "¡Tu número es {number}!",
+        "guessCount": "¡Lo encontré en solo {count} preguntas!",
+        "playAgain": "Jugar de Nuevo",
+        "history": "Preguntas realizadas:"
+      },
+      "shiftDemo": {
+        "current": "Valor Actual",
+        "shiftBy": "Desplazar por:",
+        "shiftLeft": "Desplazar Izquierda",
+        "shiftRight": "Desplazar Derecha",
+        "history": "Historial de Desplazamientos"
+      },
+      "xorExperiment": {
+        "intro": "Prueba diferentes valores para A y B. ¡Observa cómo XOR compara cada bit!",
+        "result": "A XOR B =",
+        "hint": "Nota: cuando los bits son DIFERENTES → 1, cuando son IGUALES → 0"
+      },
+      "shiftXor": {
+        "current": "Estado Actual",
+        "formula": "Cada paso: estado ^= estado << 7; estado ^= estado >>> 5",
+        "step": "Paso"
+      }
+    },
+    "sandbox": {
+      "title": "Tu Máquina de Números",
+      "step": "Paso {count}",
+      "state": "Valor actual",
+      "nextStep": "Siguiente Paso",
+      "reset": "Reiniciar",
+      "allowedOperations": "Operaciones disponibles"
+    },
+    "modulo": {
+      "title": "La Rueda del Módulo (mod {mod})",
+      "value": "Valor",
+      "reset": "Reiniciar",
+      "enterValue": "Ingresa un número",
+      "set": "Establecer"
+    },
+    "multiplication": {
+      "title": "La Tabla de Multiplicar",
+      "explanation": "{rows} filas de {cols} = {result} en total",
+      "clear": "Limpiar"
+    },
+    "bits": {
+      "title": "Toggle de {count} Bits",
+      "decimal": "Decimal",
+      "binary": "Binario",
+      "hex": "Hex",
+      "clear": "Limpiar",
+      "max": "Máx",
+      "range": "Rango: {min} a {max}"
+    },
+    "calculator": {
+      "title": "Calculadora por Pasos",
+      "currentValue": "Valor Actual",
+      "operand": "Número",
+      "apply": "Aplicar",
+      "history": "Pasos",
+      "undo": "Deshacer",
+      "reset": "Reiniciar"
+    },
+    "candy": {
+      "title": "Repartir los Dulces",
+      "candies": "Dulces",
+      "friends": "Amigos",
+      "leftover": "¡Sobran!",
+      "remainder": "(resto {r})",
+      "insight": "El resto es lo que sobra cuando no puedes dividir exactamente. ¡Esto es exactamente lo que calcula 'mod' (módulo)!"
+    },
+    "counting": {
+      "title": "Contando Paso a Paso",
+      "insight": "Sumar 1 cada vez es la transformación más simple. Es predecible - ¡por eso NO es aleatorio!"
+    }
+  }
+}
