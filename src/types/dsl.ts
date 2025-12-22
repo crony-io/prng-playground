@@ -53,9 +53,28 @@ export interface DslAlgorithmDefinition {
   updatedAt: number;
 }
 
-export interface UserAlgorithmEntry {
-  algorithm: DslAlgorithmDefinition;
-  versions: DslAlgorithmDefinition[];
+/**
+ * Calculates the state size in bits for a DSL algorithm.
+ * Counts variables read as 'state' type in operations.
+ * Falls back to stateVariables count if no state reads found.
+ */
+export function calculateStateSizeBits(alg: DslAlgorithmDefinition): number {
+  if (alg.stateSizeBits !== undefined) {
+    return alg.stateSizeBits;
+  }
+
+  const stateVarNames = new Set<string>();
+  for (const op of alg.operations) {
+    if (op.left?.type === 'state' && typeof op.left.value === 'string') {
+      stateVarNames.add(op.left.value);
+    }
+    if (op.right?.type === 'state' && typeof op.right.value === 'string') {
+      stateVarNames.add(op.right.value);
+    }
+  }
+
+  const count = stateVarNames.size > 0 ? stateVarNames.size : alg.stateVariables.length;
+  return count * 32;
 }
 
 export function createOperandFromState(name: string): DslOperand {

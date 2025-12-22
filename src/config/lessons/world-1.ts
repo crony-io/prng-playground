@@ -31,12 +31,24 @@ export const LESSON_1_1: LessonDefinition = {
       activityType: 'interactive',
       activityConfig: {
         type: 'reveal-number',
-        initialHidden: true,
         revealValue: 42,
       },
     },
     {
       id: 'step-3',
+      type: 'narrative',
+      contentKey: 'learn.lessons.lesson1_1.bridge',
+    },
+    {
+      id: 'step-4',
+      type: 'activity',
+      activityType: 'interactive',
+      activityConfig: {
+        type: 'determinism-demo',
+      },
+    },
+    {
+      id: 'step-5',
       type: 'quiz',
       quiz: [
         {
@@ -54,7 +66,7 @@ export const LESSON_1_1: LessonDefinition = {
       ],
     },
     {
-      id: 'step-4',
+      id: 'step-6',
       type: 'completion',
       contentKey: 'learn.lessons.lesson1_1.completion',
     },
@@ -71,26 +83,22 @@ export const LESSON_1_2: LessonDefinition = {
   steps: [
     {
       id: 'step-1',
-      type: 'activity',
-      activityType: 'interactive',
-      activityConfig: {
-        type: 'engagement',
-        promptKey: 'learn.lessons.lesson1_2.engagement',
-      },
-    },
-    {
-      id: 'step-2',
       type: 'narrative',
       contentKey: 'learn.lessons.lesson1_2.narrative',
     },
     {
-      id: 'step-3',
+      id: 'step-2',
       type: 'activity',
       activityType: 'interactive',
       activityConfig: {
         type: 'seed-demo',
         seeds: [5, 100, 999],
       },
+    },
+    {
+      id: 'step-3',
+      type: 'narrative',
+      contentKey: 'learn.lessons.lesson1_2.reflection',
     },
     {
       id: 'step-4',
@@ -163,6 +171,7 @@ export const LESSON_1_3: LessonDefinition = {
           options: [
             { key: 'learn.lessons.lesson1_3.quiz.q1.optionA', correct: true },
             { key: 'learn.lessons.lesson1_3.quiz.q1.optionB', correct: false },
+            { key: 'learn.lessons.lesson1_3.quiz.q1.optionC', correct: false },
           ],
           feedbackCorrectKey: 'learn.lessons.lesson1_3.quiz.q1.correct',
           feedbackIncorrectKey: 'learn.lessons.lesson1_3.quiz.q1.incorrect',
@@ -187,15 +196,25 @@ export const LESSON_1_4: LessonDefinition = {
   steps: [
     {
       id: 'step-1',
+      type: 'narrative',
+      contentKey: 'learn.lessons.lesson1_4.narrative',
+    },
+    {
+      id: 'step-2',
+      type: 'narrative',
+      contentKey: 'learn.lessons.lesson1_4.hint',
+    },
+    {
+      id: 'step-3',
       type: 'activity',
       activityType: 'comparison',
       activityConfig: {
-        algorithms: ['simple-counter', 'sfc32'],
+        algorithms: ['simple-counter', 'xorshift32'],
         showCorrelationPlot: true,
       },
     },
     {
-      id: 'step-2',
+      id: 'step-4',
       type: 'quiz',
       quiz: [
         {
@@ -213,7 +232,7 @@ export const LESSON_1_4: LessonDefinition = {
       ],
     },
     {
-      id: 'step-3',
+      id: 'step-5',
       type: 'completion',
       contentKey: 'learn.lessons.lesson1_4.completion',
     },

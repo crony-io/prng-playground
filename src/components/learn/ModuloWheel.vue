@@ -6,10 +6,12 @@ const props = withDefaults(
   defineProps<{
     modValue?: number;
     initialValue?: number;
+    allowModSwitch?: boolean;
   }>(),
   {
     modValue: 10,
     initialValue: 0,
+    allowModSwitch: true,
   },
 );
 
@@ -17,6 +19,13 @@ const { t } = useI18n();
 
 const currentValue = ref(props.initialValue);
 const inputValue = ref('');
+const activeModValue = ref(props.modValue);
+
+const modOptions = [
+  { value: 10, label: '10', isPrime: false },
+  { value: 7, label: '7', isPrime: true },
+  { value: 13, label: '13', isPrime: true },
+];
 
 const positions = computed(() => {
   const items = [];
@@ -24,23 +33,27 @@ const positions = computed(() => {
   const centerX = 100;
   const centerY = 100;
 
-  for (let i = 0; i < props.modValue; i++) {
-    const angle = (i / props.modValue) * 2 * Math.PI - Math.PI / 2;
+  for (let i = 0; i < activeModValue.value; i++) {
+    const angle = (i / activeModValue.value) * 2 * Math.PI - Math.PI / 2;
     const x = centerX + radius * Math.cos(angle);
     const y = centerY + radius * Math.sin(angle);
     items.push({
       value: i,
       x,
       y,
-      isActive: i === currentValue.value % props.modValue,
+      isActive: i === currentValue.value % activeModValue.value,
     });
   }
   return items;
 });
 
 const remainder = computed(() => {
-  return currentValue.value % props.modValue;
+  return currentValue.value % activeModValue.value;
 });
+
+function setModValue(val: number) {
+  activeModValue.value = val;
+}
 
 function addValue(amount: number) {
   currentValue.value += amount;
@@ -62,7 +75,26 @@ function reset() {
 <template>
   <div class="flex flex-col items-center gap-4 p-6 glass rounded-xl">
     <div class="text-lg font-semibold text-body">
-      {{ t('learn.modulo.title', { mod: props.modValue }) }}
+      {{ t('learn.modulo.title', { mod: activeModValue }) }}
+    </div>
+
+    <!-- Mod Value Switcher -->
+    <div v-if="props.allowModSwitch" class="flex gap-2 items-center">
+      <span class="text-xs text-muted">{{ t('learn.modulo.modBy') }}:</span>
+      <button
+        v-for="opt in modOptions"
+        :key="opt.value"
+        :class="[
+          'px-3 py-1 text-sm rounded transition-colors',
+          activeModValue === opt.value
+            ? 'bg-primary text-page'
+            : 'bg-surface border border-border text-body hover:border-primary',
+        ]"
+        @click="setModValue(opt.value)"
+      >
+        {{ opt.label }}
+        <span v-if="opt.isPrime" class="text-xs opacity-70">({{ t('learn.modulo.prime') }})</span>
+      </button>
     </div>
 
     <svg class="w-[200px] h-[200px]" viewBox="0 0 200 200">
@@ -99,7 +131,7 @@ function reset() {
         <span class="text-2xl font-bold text-primary">{{ currentValue }}</span>
       </div>
       <div class="flex items-baseline gap-2">
-        <span class="text-base text-muted">{{ currentValue }} mod {{ props.modValue }} =</span>
+        <span class="text-base text-muted">{{ currentValue }} mod {{ activeModValue }} =</span>
         <span class="text-2xl font-bold text-primary">{{ remainder }}</span>
       </div>
     </div>

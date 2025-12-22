@@ -3,6 +3,8 @@
  * These are educational tests to help students understand PRNG quality.
  */
 
+import { LIMITS } from '@/constants/limits';
+
 export interface QualityTestResult {
   name: string;
   value: number;
@@ -18,8 +20,19 @@ export interface QualityTestResults {
   bitBias: QualityTestResult[];
 }
 
+/**
+ * Validates that samples are in the expected [0, 1) range for PRNG output.
+ */
+function validateSamples(samples: number[]): boolean {
+  return samples.every((s) => s >= 0 && s < 1);
+}
+
 export function runQualityTests(samples: number[]): QualityTestResults | null {
-  if (samples.length < 1000) {
+  if (samples.length < LIMITS.MIN_SAMPLES_FOR_QUALITY_TESTS) {
+    return null;
+  }
+
+  if (!validateSamples(samples)) {
     return null;
   }
 

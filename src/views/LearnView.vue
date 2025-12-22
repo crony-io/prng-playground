@@ -80,13 +80,13 @@ watch(currentLesson, (newLesson, oldLesson) => {
 .learn-title {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--body-color);
   margin: 0 0 0.5rem 0;
 }
 
 .learn-subtitle {
   font-size: 1.125rem;
-  color: var(--color-text-muted);
+  color: var(--app-muted);
   margin: 0;
 }
 
@@ -94,22 +94,22 @@ watch(currentLesson, (newLesson, oldLesson) => {
   display: flex;
   justify-content: center;
   padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--app-border);
 }
 
 .reset-button {
   padding: 0.5rem 1rem;
   font-size: 0.875rem;
-  color: var(--color-text-muted);
+  color: var(--app-muted);
   background: transparent;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--app-border);
   border-radius: 0.375rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .reset-button:hover {
-  color: var(--color-danger);
-  border-color: var(--color-danger);
+  color: var(--app-error);
+  border-color: var(--app-error);
 }
 </style>

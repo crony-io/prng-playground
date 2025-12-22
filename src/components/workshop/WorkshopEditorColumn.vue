@@ -9,6 +9,7 @@ import OperationRow from '@/components/workshop/OperationRow.vue';
 import WorkshopOperationsCodeEditor from '@/components/workshop/WorkshopOperationsCodeEditor.vue';
 import { useWorkshopStore } from '@/stores/workshop';
 import type { DslAlgorithmDefinition, DslOperand, DslOperationType } from '@/types/dsl';
+import { calculateStateSizeBits } from '@/types/dsl';
 import type { BuiltinTemplate } from '@/utils/builtin-to-dsl';
 import { BUILTIN_TEMPLATES } from '@/utils/builtin-to-dsl';
 
@@ -55,25 +56,19 @@ function getParentName(parentId: string): string {
   return t('common.unknown');
 }
 
-/**
- * Calculates the actual state size in bits for a DSL algorithm.
- * State variables are those that persist between calls - identified by
- * being read with type: 'state' in operations (not just temps).
- */
 function getAlgorithmStateBits(alg: DslAlgorithmDefinition): number {
-  // Use stored stateSizeBits if available (set during fork from template)
+  // Check stored value first
   if (alg.stateSizeBits !== undefined) {
     return alg.stateSizeBits;
   }
 
-  // Traverse parent chain to find the original template
+  // Traverse parent chain to find template stateSizeBits
   let currentParentId = alg.parentId;
   while (currentParentId) {
     const template = getParentTemplate(currentParentId);
     if (template) {
       return template.stateSizeBits;
     }
-    // Check if parent is a user algorithm with stored stateSizeBits
     const parentAlg = workshopStore.algorithms.find((a) => a.id === currentParentId);
     if (!parentAlg) {
       break;
@@ -84,22 +79,8 @@ function getAlgorithmStateBits(alg: DslAlgorithmDefinition): number {
     currentParentId = parentAlg.parentId;
   }
 
-  // Calculate from operations: count variables read as 'state' type
-  // These are the actual persistent state variables
-  const stateVarNames = new Set<string>();
-  for (const op of alg.operations) {
-    if (op.left?.type === 'state' && typeof op.left.value === 'string') {
-      stateVarNames.add(op.left.value);
-    }
-    if (op.right?.type === 'state' && typeof op.right.value === 'string') {
-      stateVarNames.add(op.right.value);
-    }
-  }
-
-  // If no state reads found, fall back to stateVariables count
-  // (this handles edge cases like a simple counter)
-  const count = stateVarNames.size > 0 ? stateVarNames.size : alg.stateVariables.length;
-  return count * 32;
+  // Fall back to calculation
+  return calculateStateSizeBits(alg);
 }
 
 function handleForkAlgorithm(alg: DslAlgorithmDefinition): void {

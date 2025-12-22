@@ -4,6 +4,11 @@ import CandyDistribution from '@/components/learn/CandyDistribution.vue';
 import MultiplicationGrid from '@/components/learn/MultiplicationGrid.vue';
 import BitTogglePanel from '@/components/learn/BitTogglePanel.vue';
 import CountingVisual from '@/components/learn/CountingVisual.vue';
+import ShiftMicroTeaching from '@/components/learn/ShiftMicroTeaching.vue';
+import XorMicroTeaching from '@/components/learn/XorMicroTeaching.vue';
+import ModuloWheel from '@/components/learn/ModuloWheel.vue';
+import OverflowVisual from '@/components/learn/OverflowVisual.vue';
+import MultiStateVisual from '@/components/learn/MultiStateVisual.vue';
 
 defineProps<{
   conceptKey: string;
@@ -15,7 +20,9 @@ defineProps<{
     | 'counting'
     | 'xor-comparison'
     | 'shift-demo'
-    | 'binary-tree';
+    | 'binary-tree'
+    | 'overflow'
+    | 'multi-state';
   contentKey?: string;
   insightKey?: string;
 }>();
@@ -54,31 +61,23 @@ const { t } = useI18n();
       </template>
 
       <template v-else-if="visualType === 'modulo-wheel'">
-        <div class="flex flex-col gap-4 items-center">
-          <div class="text-4xl font-bold text-primary">mod 10</div>
-          <p class="text-sm text-muted">{{ t('learn.microTeaching.remainder.insight') }}</p>
-        </div>
+        <ModuloWheel :mod-value="10" :initial-value="0" />
       </template>
 
       <template v-else-if="visualType === 'xor-comparison'">
-        <div class="flex flex-col gap-4 font-mono text-center">
-          <div class="flex items-center gap-4">
-            <span class="text-body">0101 (5)</span>
-            <span class="text-primary font-bold">XOR</span>
-            <span class="text-body">0011 (3)</span>
-          </div>
-          <div class="text-2xl font-bold text-accent">= 0110 (6)</div>
-          <p class="text-sm text-muted">{{ t('learn.microTeaching.xor.insight') }}</p>
-        </div>
+        <XorMicroTeaching />
       </template>
 
       <template v-else-if="visualType === 'shift-demo'">
-        <div class="flex flex-col gap-4 font-mono text-center">
-          <div class="text-body">00000101 (5)</div>
-          <div class="text-primary">← shift left ←</div>
-          <div class="text-accent text-xl font-bold">00001010 (10)</div>
-          <p class="text-sm text-muted">{{ t('learn.microTeaching.shift.insight') }}</p>
-        </div>
+        <ShiftMicroTeaching />
+      </template>
+
+      <template v-else-if="visualType === 'overflow'">
+        <OverflowVisual />
+      </template>
+
+      <template v-else-if="visualType === 'multi-state'">
+        <MultiStateVisual />
       </template>
     </div>
 

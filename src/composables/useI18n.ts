@@ -107,7 +107,6 @@ export function applyDocumentLocale(localeCode: string): void {
 
 /**
  * Unified locale composable that handles all locale-related functionality.
- * Consolidates previous useLanguageSwitcher and useLanguage composables.
  */
 export function useLocale() {
   const i18n = useI18n();
@@ -156,9 +155,3 @@ export function useLocale() {
     availableLocales,
   };
 }
-
-/** @deprecated Use useLocale() instead */
-export const useLanguageSwitcher = useLocale;
-
-/** @deprecated Use useLocale() instead */
-export const useLanguage = useLocale;

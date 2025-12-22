@@ -53,9 +53,9 @@ export const LESSON_2_1: LessonDefinition = {
           type: 'experiment',
           questionKey: 'learn.lessons.lesson2_1.quiz.q1.question',
           options: [
-            { key: 'learn.lessons.lesson2_1.quiz.q1.optionA', correct: false },
+            { key: 'learn.lessons.lesson2_1.quiz.q1.optionA', correct: true },
             { key: 'learn.lessons.lesson2_1.quiz.q1.optionB', correct: false },
-            { key: 'learn.lessons.lesson2_1.quiz.q1.optionC', correct: true },
+            { key: 'learn.lessons.lesson2_1.quiz.q1.optionC', correct: false },
           ],
           feedbackCorrectKey: 'learn.lessons.lesson2_1.quiz.q1.correct',
           feedbackIncorrectKey: 'learn.lessons.lesson2_1.quiz.q1.incorrect',
@@ -80,11 +80,21 @@ export const LESSON_2_2: LessonDefinition = {
   steps: [
     {
       id: 'step-1',
+      type: 'micro-teaching',
+      microTeaching: {
+        conceptKey: 'learn.microTeaching.overflow.concept',
+        visualType: 'overflow',
+        contentKey: 'learn.microTeaching.overflow.content',
+        insightKey: 'learn.microTeaching.overflow.insight',
+      },
+    },
+    {
+      id: 'step-2',
       type: 'narrative',
       contentKey: 'learn.lessons.lesson2_2.narrative',
     },
     {
-      id: 'step-2',
+      id: 'step-3',
       type: 'activity',
       activityType: 'interactive',
       activityConfig: {
@@ -92,7 +102,7 @@ export const LESSON_2_2: LessonDefinition = {
       },
     },
     {
-      id: 'step-3',
+      id: 'step-4',
       type: 'quiz',
       quiz: [
         {
@@ -102,6 +112,7 @@ export const LESSON_2_2: LessonDefinition = {
           options: [
             { key: 'learn.lessons.lesson2_2.quiz.q1.optionA', correct: false },
             { key: 'learn.lessons.lesson2_2.quiz.q1.optionB', correct: true },
+            { key: 'learn.lessons.lesson2_2.quiz.q1.optionC', correct: false },
           ],
           feedbackCorrectKey: 'learn.lessons.lesson2_2.quiz.q1.correct',
           feedbackIncorrectKey: 'learn.lessons.lesson2_2.quiz.q1.incorrect',
@@ -109,7 +120,7 @@ export const LESSON_2_2: LessonDefinition = {
       ],
     },
     {
-      id: 'step-4',
+      id: 'step-5',
       type: 'completion',
       contentKey: 'learn.lessons.lesson2_2.completion',
     },
@@ -150,6 +161,11 @@ export const LESSON_2_3: LessonDefinition = {
     },
     {
       id: 'step-4',
+      type: 'narrative',
+      contentKey: 'learn.lessons.lesson2_3.primer',
+    },
+    {
+      id: 'step-5',
       type: 'quiz',
       quiz: [
         {
@@ -157,8 +173,8 @@ export const LESSON_2_3: LessonDefinition = {
           type: 'concept',
           questionKey: 'learn.lessons.lesson2_3.quiz.q1.question',
           options: [
-            { key: 'learn.lessons.lesson2_3.quiz.q1.optionA', correct: false },
-            { key: 'learn.lessons.lesson2_3.quiz.q1.optionB', correct: true },
+            { key: 'learn.lessons.lesson2_3.quiz.q1.optionA', correct: true },
+            { key: 'learn.lessons.lesson2_3.quiz.q1.optionB', correct: false },
             { key: 'learn.lessons.lesson2_3.quiz.q1.optionC', correct: false },
           ],
           feedbackCorrectKey: 'learn.lessons.lesson2_3.quiz.q1.correct',
@@ -167,7 +183,7 @@ export const LESSON_2_3: LessonDefinition = {
       ],
     },
     {
-      id: 'step-5',
+      id: 'step-6',
       type: 'completion',
       contentKey: 'learn.lessons.lesson2_3.completion',
     },
@@ -200,6 +216,11 @@ export const LESSON_2_4: LessonDefinition = {
     },
     {
       id: 'step-3',
+      type: 'narrative',
+      contentKey: 'learn.lessons.lesson2_4.warning',
+    },
+    {
+      id: 'step-4',
       type: 'quiz',
       quiz: [
         {
@@ -218,7 +239,7 @@ export const LESSON_2_4: LessonDefinition = {
       ],
     },
     {
-      id: 'step-4',
+      id: 'step-5',
       type: 'completion',
       contentKey: 'learn.lessons.lesson2_4.completion',
     },
@@ -241,6 +262,11 @@ export const LESSON_2_5: LessonDefinition = {
     },
     {
       id: 'step-2',
+      type: 'narrative',
+      contentKey: 'learn.lessons.lesson2_5.formula',
+    },
+    {
+      id: 'step-3',
       type: 'activity',
       activityType: 'fork-explore',
       activityConfig: {
@@ -250,7 +276,7 @@ export const LESSON_2_5: LessonDefinition = {
       },
     },
     {
-      id: 'step-3',
+      id: 'step-4',
       type: 'quiz',
       quiz: [
         {
@@ -260,6 +286,7 @@ export const LESSON_2_5: LessonDefinition = {
           options: [
             { key: 'learn.lessons.lesson2_5.quiz.q1.optionA', correct: false },
             { key: 'learn.lessons.lesson2_5.quiz.q1.optionB', correct: true },
+            { key: 'learn.lessons.lesson2_5.quiz.q1.optionC', correct: false },
           ],
           feedbackCorrectKey: 'learn.lessons.lesson2_5.quiz.q1.correct',
           feedbackIncorrectKey: 'learn.lessons.lesson2_5.quiz.q1.incorrect',
@@ -267,7 +294,7 @@ export const LESSON_2_5: LessonDefinition = {
       ],
     },
     {
-      id: 'step-4',
+      id: 'step-5',
       type: 'completion',
       contentKey: 'learn.lessons.lesson2_5.completion',
     },

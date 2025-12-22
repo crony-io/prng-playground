@@ -1,10 +1,3 @@
-export { default as NumberKeeperBadge } from '@/components/learn/badges/NumberKeeperBadge.vue';
-export { default as RecipeMixerBadge } from '@/components/learn/badges/RecipeMixerBadge.vue';
-export { default as BinaryExplorerBadge } from '@/components/learn/badges/BinaryExplorerBadge.vue';
-export { default as BitMasterBadge } from '@/components/learn/badges/BitMasterBadge.vue';
-export { default as RandomnessEngineerBadge } from '@/components/learn/badges/RandomnessEngineerBadge.vue';
-export { default as ResearcherBadge } from '@/components/learn/badges/ResearcherBadge.vue';
-
 export type BadgeType =
   | 'numberKeeper'
   | 'recipeMixer'

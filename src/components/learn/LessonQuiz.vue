@@ -32,7 +32,11 @@ function checkAnswer() {
 
   const question = currentQuestion.value;
 
-  if (question.type === 'concept' || question.type === 'experiment') {
+  if (
+    question.type === 'concept' ||
+    question.type === 'experiment' ||
+    question.type === 'debugging'
+  ) {
     const correctOption = question.options?.find((opt) => opt.correct);
     isCorrect.value = selectedOption.value === correctOption?.key;
   } else if (question.type === 'prediction') {

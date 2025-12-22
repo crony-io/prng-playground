@@ -7,11 +7,13 @@ const props = withDefaults(
     bitCount?: 4 | 8;
     initialValue?: number;
     readonly?: boolean;
+    showPreview32?: boolean;
   }>(),
   {
     bitCount: 8,
     initialValue: 0,
     readonly: false,
+    showPreview32: false,
   },
 );
 
@@ -162,6 +164,22 @@ watch(
 
     <div class="text-xs text-muted">
       {{ t('learn.bits.range', { min: 0, max: maxValue }) }}
+    </div>
+
+    <!-- 32-bit Preview -->
+    <div
+      v-if="props.showPreview32"
+      class="mt-4 p-4 bg-accent/10 border border-accent/30 rounded-lg text-center"
+    >
+      <div class="text-sm font-semibold text-accent mb-2">
+        {{ t('learn.bits.preview32Title') }}
+      </div>
+      <div class="text-lg font-bold text-primary font-mono">
+        {{ t('learn.bits.preview32Possibilities', { count: '4,294,967,296' }) }}
+      </div>
+      <div class="text-xs text-muted mt-2">
+        {{ t('learn.bits.preview32Explanation') }}
+      </div>
     </div>
   </div>
 </template>

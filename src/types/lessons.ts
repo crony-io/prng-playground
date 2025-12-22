@@ -21,19 +21,26 @@ export interface QuizQuestion {
 }
 
 /**
+ * Visual types for micro-teaching components
+ */
+export type MicroTeachingVisualType =
+  | 'multiplication-grid'
+  | 'candy-distribution'
+  | 'bit-toggle'
+  | 'modulo-wheel'
+  | 'counting'
+  | 'xor-comparison'
+  | 'shift-demo'
+  | 'binary-tree'
+  | 'overflow'
+  | 'multi-state';
+
+/**
  * Micro-teaching content for prerequisite concepts
  */
 export interface MicroTeaching {
   conceptKey: string;
-  visualType:
-    | 'multiplication-grid'
-    | 'candy-distribution'
-    | 'bit-toggle'
-    | 'modulo-wheel'
-    | 'counting'
-    | 'xor-comparison'
-    | 'shift-demo'
-    | 'binary-tree';
+  visualType: MicroTeachingVisualType;
   contentKey: string;
   insightKey: string;
 }
@@ -49,6 +56,54 @@ export type LessonActivityType =
   | 'fork-explore';
 
 /**
+ * Typed activity configurations with discriminated union.
+ * Use these for type-safe activity config definitions.
+ */
+export type TypedActivityConfig =
+  // Interactive activities
+  | { type: 'reveal-number'; revealValue: number }
+  | { type: 'engagement'; promptKey: string }
+  | { type: 'seed-demo'; seeds?: number[] }
+  | { type: 'determinism-demo' }
+  | { type: 'overflow-demo' }
+  | { type: 'binary-guessing-game'; maxNumber?: number; questionsNeeded?: number }
+  | { type: 'bit-toggle'; bitCount?: 4 | 8; showPreview32?: boolean }
+  | { type: 'bit-shift-demo'; showBitVisualization?: boolean }
+  | { type: 'xor-experiment'; showBitVisualization?: boolean }
+  | { type: 'modulo-wheel'; modValue?: number }
+  | { type: 'candy-distribution' }
+  | { type: 'multiplication-grid'; size?: number }
+  | { type: 'visual-calculator'; initialValue?: number; allowedOperations?: string[] }
+  | { type: 'quality-lab'; algorithms?: string[]; showAllTests?: boolean }
+  | { type: 'designer-challenge' }
+  | { type: 'test-interpretation'; showDetailedExplanations?: boolean }
+  | { type: 'final-project' }
+  | { type: 'rotation-vs-shift' }
+  | { type: 'shift-xor-combine'; showBitVisualization?: boolean; showTimeSeries?: boolean }
+  // Sandbox activities
+  | { type: 'sandbox'; algorithmId?: string; showVisualization?: 'time-series' | 'bit' }
+  | { type: 'recipe-builder' }
+  // Comparison activities
+  | { type: 'add-vs-multiply'; showTimeSeries?: boolean }
+  // Fork-explore activities (when used with activityType: 'fork-explore')
+  | {
+      type?: 'fork-explore';
+      algorithmId: string;
+      showTimeSeries?: boolean;
+      showCorrelationPlot?: boolean;
+      showHistogram?: boolean;
+      showBitVisualization?: boolean;
+      showMultiState?: boolean;
+      showRotations?: boolean;
+    };
+
+/**
+ * Activity configuration - accepts typed configs or legacy Record pattern.
+ * Gradually migrate from Record<string, unknown> to TypedActivityConfig.
+ */
+export type ActivityConfig = TypedActivityConfig | Record<string, unknown>;
+
+/**
  * Lesson step definition - each lesson has multiple steps
  */
 export interface LessonStep {
@@ -57,7 +112,7 @@ export interface LessonStep {
   contentKey?: string;
   microTeaching?: MicroTeaching;
   activityType?: LessonActivityType;
-  activityConfig?: Record<string, unknown>;
+  activityConfig?: ActivityConfig;
   quiz?: QuizQuestion[];
 }
 

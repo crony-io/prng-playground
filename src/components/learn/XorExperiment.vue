@@ -18,6 +18,7 @@ const { t } = useI18n();
 const xorValueA = ref(props.initialA);
 const xorValueB = ref(props.initialB);
 const xorResult = computed(() => xorValueA.value ^ xorValueB.value);
+const xorReversed = computed(() => xorResult.value ^ xorValueB.value);
 </script>
 
 <template>
@@ -63,5 +64,30 @@ const xorResult = computed(() => xorValueA.value ^ xorValueB.value);
     </div>
 
     <p class="text-sm text-muted text-center">{{ t('learn.activities.xorExperiment.hint') }}</p>
+
+    <!-- Reversibility demonstration -->
+    <div class="mt-4 p-4 bg-accent/10 border border-accent/30 rounded-xl">
+      <div class="text-sm font-semibold text-accent mb-3 text-center">
+        {{ t('learn.activities.xorExperiment.reversibilityTitle') }}
+      </div>
+      <div class="flex items-center justify-center gap-2 flex-wrap text-sm font-mono">
+        <span class="px-2 py-1 bg-surface rounded">{{ xorResult }}</span>
+        <span class="text-muted">XOR</span>
+        <span class="px-2 py-1 bg-surface rounded">{{ xorValueB }}</span>
+        <span class="text-muted">=</span>
+        <span
+          class="px-2 py-1 rounded font-bold"
+          :class="xorReversed === xorValueA ? 'bg-accent/20 text-accent' : 'bg-surface'"
+        >
+          {{ xorReversed }}
+        </span>
+        <span v-if="xorReversed === xorValueA" class="text-accent font-bold">
+          ← {{ t('learn.activities.xorExperiment.backToA') }}
+        </span>
+      </div>
+      <p class="text-xs text-muted text-center mt-3">
+        {{ t('learn.activities.xorExperiment.reversibilityHint') }}
+      </p>
+    </div>
   </div>
 </template>

@@ -23,11 +23,21 @@ export const LESSON_3_1: LessonDefinition = {
   steps: [
     {
       id: 'step-1',
+      type: 'micro-teaching',
+      microTeaching: {
+        conceptKey: 'learn.microTeaching.shift.concept',
+        visualType: 'shift-demo',
+        contentKey: 'learn.microTeaching.shift.content',
+        insightKey: 'learn.microTeaching.shift.insight',
+      },
+    },
+    {
+      id: 'step-2',
       type: 'narrative',
       contentKey: 'learn.lessons.lesson3_1.narrative',
     },
     {
-      id: 'step-2',
+      id: 'step-3',
       type: 'activity',
       activityType: 'interactive',
       activityConfig: {
@@ -36,7 +46,7 @@ export const LESSON_3_1: LessonDefinition = {
       },
     },
     {
-      id: 'step-3',
+      id: 'step-4',
       type: 'quiz',
       quiz: [
         {
@@ -54,7 +64,7 @@ export const LESSON_3_1: LessonDefinition = {
       ],
     },
     {
-      id: 'step-4',
+      id: 'step-5',
       type: 'completion',
       contentKey: 'learn.lessons.lesson3_1.completion',
     },
@@ -105,6 +115,7 @@ export const LESSON_3_2: LessonDefinition = {
           options: [
             { key: 'learn.lessons.lesson3_2.quiz.q1.optionA', correct: false },
             { key: 'learn.lessons.lesson3_2.quiz.q1.optionB', correct: true },
+            { key: 'learn.lessons.lesson3_2.quiz.q1.optionC', correct: false },
           ],
           feedbackCorrectKey: 'learn.lessons.lesson3_2.quiz.q1.correct',
           feedbackIncorrectKey: 'learn.lessons.lesson3_2.quiz.q1.incorrect',
@@ -130,13 +141,23 @@ export const LESSON_3_3: LessonDefinition = {
   steps: [
     {
       id: 'step-1',
+      type: 'micro-teaching',
+      microTeaching: {
+        conceptKey: 'learn.microTeaching.shiftXorCombo.concept',
+        visualType: 'xor-comparison',
+        contentKey: 'learn.microTeaching.shiftXorCombo.content',
+        insightKey: 'learn.microTeaching.shiftXorCombo.insight',
+      },
+    },
+    {
+      id: 'step-2',
       type: 'narrative',
       contentKey: 'learn.lessons.lesson3_3.narrative',
     },
     {
-      id: 'step-2',
+      id: 'step-3',
       type: 'activity',
-      activityType: 'sandbox',
+      activityType: 'interactive',
       activityConfig: {
         type: 'shift-xor-combine',
         showBitVisualization: true,
@@ -144,7 +165,7 @@ export const LESSON_3_3: LessonDefinition = {
       },
     },
     {
-      id: 'step-3',
+      id: 'step-4',
       type: 'quiz',
       quiz: [
         {
@@ -154,6 +175,7 @@ export const LESSON_3_3: LessonDefinition = {
           options: [
             { key: 'learn.lessons.lesson3_3.quiz.q1.optionA', correct: false },
             { key: 'learn.lessons.lesson3_3.quiz.q1.optionB', correct: true },
+            { key: 'learn.lessons.lesson3_3.quiz.q1.optionC', correct: false },
           ],
           feedbackCorrectKey: 'learn.lessons.lesson3_3.quiz.q1.correct',
           feedbackIncorrectKey: 'learn.lessons.lesson3_3.quiz.q1.incorrect',
@@ -161,7 +183,7 @@ export const LESSON_3_3: LessonDefinition = {
       ],
     },
     {
-      id: 'step-4',
+      id: 'step-5',
       type: 'completion',
       contentKey: 'learn.lessons.lesson3_3.completion',
     },
@@ -180,11 +202,21 @@ export const LESSON_3_4: LessonDefinition = {
   steps: [
     {
       id: 'step-1',
+      type: 'micro-teaching',
+      microTeaching: {
+        conceptKey: 'learn.microTeaching.xorshift.concept',
+        visualType: 'xor-comparison',
+        contentKey: 'learn.microTeaching.xorshift.content',
+        insightKey: 'learn.microTeaching.xorshift.insight',
+      },
+    },
+    {
+      id: 'step-2',
       type: 'narrative',
       contentKey: 'learn.lessons.lesson3_4.narrative',
     },
     {
-      id: 'step-2',
+      id: 'step-3',
       type: 'activity',
       activityType: 'fork-explore',
       activityConfig: {
@@ -194,17 +226,21 @@ export const LESSON_3_4: LessonDefinition = {
       },
     },
     {
-      id: 'step-3',
+      id: 'step-4',
+      type: 'narrative',
+      contentKey: 'learn.lessons.lesson3_4.comparisonIntro',
+    },
+    {
+      id: 'step-5',
       type: 'activity',
       activityType: 'comparison',
       activityConfig: {
         algorithms: ['lcg', 'xorshift32'],
         showCorrelationPlot: true,
-        showQualityTests: true,
       },
     },
     {
-      id: 'step-4',
+      id: 'step-6',
       type: 'quiz',
       quiz: [
         {
@@ -214,6 +250,7 @@ export const LESSON_3_4: LessonDefinition = {
           options: [
             { key: 'learn.lessons.lesson3_4.quiz.q1.optionA', correct: false },
             { key: 'learn.lessons.lesson3_4.quiz.q1.optionB', correct: true },
+            { key: 'learn.lessons.lesson3_4.quiz.q1.optionC', correct: false },
           ],
           feedbackCorrectKey: 'learn.lessons.lesson3_4.quiz.q1.correct',
           feedbackIncorrectKey: 'learn.lessons.lesson3_4.quiz.q1.incorrect',
@@ -221,7 +258,7 @@ export const LESSON_3_4: LessonDefinition = {
       ],
     },
     {
-      id: 'step-5',
+      id: 'step-7',
       type: 'completion',
       contentKey: 'learn.lessons.lesson3_4.completion',
     },

@@ -1,4 +1,4 @@
-import { ref, computed, shallowRef, readonly, type Ref } from 'vue';
+import { ref, computed, shallowRef, readonly, onUnmounted, type Ref } from 'vue';
 import type { PrngAlgorithmDefinition, PrngSeed } from '@/types/prng';
 import { getAlgorithm, DEFAULT_ALGORITHM_ID } from '@/algorithms';
 import { LIMITS } from '@/constants/limits';
@@ -218,6 +218,10 @@ export function usePrngRunner(options: UsePrngRunnerOptions = {}) {
   }
 
   initialize();
+
+  onUnmounted(() => {
+    stopAutorun();
+  });
 
   return {
     algorithmId: readonly(algorithmId) as Readonly<Ref<string>>,

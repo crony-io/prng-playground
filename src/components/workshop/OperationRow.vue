@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n';
 
 import OperandSelect from '@/components/workshop/OperandSelect.vue';
 import type { DslOperation, DslOperand, DslOperationType, DslStateVariable } from '@/types/dsl';
-import { EDITOR_OPERATIONS, getOperationDoc } from '@/utils/operation-docs';
+import { EDITOR_OPERATIONS, getOperationMeta } from '@/utils/operation-docs';
 
 interface Props {
   operation: DslOperation;
@@ -36,8 +36,10 @@ function isShiftOrRotate(op: DslOperationType): boolean {
 }
 
 function getOperationTooltip(op: DslOperationType): string {
-  const doc = getOperationDoc(op);
-  return `${doc.name}: ${doc.brief}\n\nExample: ${doc.example}`;
+  const meta = getOperationMeta(op);
+  const brief = t(`${meta.i18nKey}.brief`);
+  const example = t(`${meta.i18nKey}.example`);
+  return `${op}: ${brief}\n\n${t('common.example')}: ${example}`;
 }
 
 const showMoveUp = computed(() => props.index > 0);
@@ -105,9 +107,9 @@ function handleAmountChange(event: Event): void {
           v-for="op in EDITOR_OPERATIONS"
           :key="op"
           :value="op"
-          :title="getOperationDoc(op).brief"
+          :title="t(`${getOperationMeta(op).i18nKey}.brief`)"
         >
-          {{ getOperationDoc(op).symbol }} {{ getOperationDoc(op).name }}
+          {{ getOperationMeta(op).symbol }} {{ op }}
         </option>
       </select>
 

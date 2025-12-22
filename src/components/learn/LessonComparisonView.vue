@@ -12,12 +12,14 @@ const props = withDefaults(
     showCorrelation?: boolean;
     showTimeSeries?: boolean;
     showHistogram?: boolean;
+    showQualityTests?: boolean;
     sampleCount?: number;
   }>(),
   {
     showCorrelation: true,
     showTimeSeries: false,
     showHistogram: true,
+    showQualityTests: false,
     sampleCount: 100,
   },
 );
@@ -79,6 +81,37 @@ const algorithmNames = computed(() => ({
   mulberry32: t('algorithms.mulberry32.name'),
   sfc32: t('algorithms.sfc32.name'),
 }));
+
+function calculateQualityScore(samples: PrngSample[]): {
+  mean: boolean;
+  variance: boolean;
+  overall: number;
+} {
+  if (!samples || samples.length === 0) {
+    return { mean: false, variance: false, overall: 0 };
+  }
+
+  const values = samples.map((s) => s.value);
+  const mean = values.reduce((a, b) => a + b, 0) / values.length;
+  const variance = values.reduce((a, b) => a + (b - mean) ** 2, 0) / values.length;
+
+  const meanPass = Math.abs(mean - 0.5) < 0.1;
+  const variancePass = variance > 0.05 && variance < 0.15;
+
+  return {
+    mean: meanPass,
+    variance: variancePass,
+    overall: (meanPass ? 50 : 0) + (variancePass ? 50 : 0),
+  };
+}
+
+const qualityScores = computed(() => {
+  const scores: Record<string, { mean: boolean; variance: boolean; overall: number }> = {};
+  for (const algo of props.algorithms) {
+    scores[algo] = calculateQualityScore(algorithmSamples.value[algo] ?? []);
+  }
+  return scores;
+});
 </script>
 
 <template>
@@ -106,6 +139,27 @@ const algorithmNames = computed(() => ({
 
         <div v-if="showHistogram && algorithmSamples[algo]" class="h-[100px]">
           <DistributionHistogram :samples="algorithmSamples[algo]" />
+        </div>
+
+        <div v-if="showQualityTests && qualityScores[algo]" class="flex flex-col gap-2 mt-2">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-muted">{{ t('learn.comparison.meanTest') }}</span>
+            <span :class="qualityScores[algo].mean ? 'text-accent' : 'text-error'">
+              {{ qualityScores[algo].mean ? '✓' : '✗' }}
+            </span>
+          </div>
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-muted">{{ t('learn.comparison.varianceTest') }}</span>
+            <span :class="qualityScores[algo].variance ? 'text-accent' : 'text-error'">
+              {{ qualityScores[algo].variance ? '✓' : '✗' }}
+            </span>
+          </div>
+          <div class="flex items-center justify-between text-sm font-semibold">
+            <span class="text-muted">{{ t('learn.comparison.score') }}</span>
+            <span :class="qualityScores[algo].overall >= 50 ? 'text-accent' : 'text-error'">
+              {{ qualityScores[algo].overall }}%
+            </span>
+          </div>
         </div>
       </div>
     </div>

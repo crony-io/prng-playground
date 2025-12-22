@@ -20,7 +20,8 @@
     "error": "Error",
     "warning": "Warning",
     "unknown": "Unknown",
-    "unknownError": "Unknown error"
+    "unknownError": "Unknown error",
+    "example": "Example"
   },
   "prngRunner": {
     "errors": {
@@ -149,6 +150,15 @@
       "label": "Sample Size"
     },
     "controls": {
+      "modulo": {
+        "title": "Modulo {mod} Wheel",
+        "value": "Value",
+        "enterValue": "Enter number",
+        "set": "Set",
+        "reset": "Reset",
+        "modBy": "Mod by",
+        "prime": "prime"
+      },
       "step": "Step",
       "run": "Run",
       "autorun": "Auto",
@@ -451,7 +461,8 @@
       "lesson1_1": {
         "title": "The Sleeping Number",
         "objective": "Understand the concept of variable/state",
-        "narrative": "Imagine you have a magic box. Inside there's a number. That number is waiting... waiting for what?",
+        "narrative": "Imagine you have a magic box. Inside there's a number - let's call it the STATE. This number is special because it remembers where it is. Every time you peek inside, you see the same number... until you do something to change it. This 'memory' is the foundation of how computers generate numbers that seem random!",
+        "bridge": "That number you just revealed (42) is the STATE. But here's the key insight: if we apply a RULE to that number (like 'add 7' or 'multiply by 3'), we get a NEW number. Apply the rule again, get another number. Apply it 100 times... you get a SEQUENCE of 100 numbers! And here's the magic: if two boxes start with the SAME number and use the SAME rule, they'll produce the EXACT SAME sequence!",
         "completion": "You discovered that numbers can be stored!",
         "quiz": {
           "q1": {
@@ -467,9 +478,9 @@
       "lesson1_2": {
         "title": "The Magic Seed",
         "objective": "Understand that initial state matters",
-        "narrative": "What if you could choose what number the box starts with? That special number is called a SEED.",
-        "engagement": "Quick! Think of your favorite number between 1 and 100.",
-        "completion": "You learned about seeds!",
+        "narrative": "What if you could choose what number the box starts with? That special starting number is called a SEED. Here's the powerful idea: games save the seed so players can replay the exact same 'random' experience! Speedrunners share seeds to compare runs on identical maps. Try different seeds below - notice how the SAME seed always produces the SAME sequence.",
+        "reflection": "🔑 KEY INSIGHT: Same seed = Same sequence, EVERY time! This is why seeds are so powerful. Game developers save seeds to recreate levels. Players share seeds to compete on identical challenges. The 'random' numbers aren't really random at all - they're completely determined by the seed!",
+        "completion": "You learned about seeds! Same seed = same sequence, every time.",
         "quiz": {
           "q1": {
             "question": "Why would a game developer want to save the seed that started a level?",
@@ -491,6 +502,7 @@
             "question": "Could your friend predict the next number from this counter?",
             "optionA": "Yes, it's always the current number plus 1",
             "optionB": "No, it's impossible to guess",
+            "optionC": "Only if they know advanced math",
             "correct": "Exactly! A simple counter is completely PREDICTABLE - terrible for randomness!",
             "incorrect": "Watch the pattern: 1, 2, 3, 4... can you guess what comes next?"
           }
@@ -499,8 +511,9 @@
       "lesson1_4": {
         "title": "Where's the Mystery?",
         "objective": "Identify that simple addition is NOT random",
-        "narrative": "Let's compare two different number generators...",
-        "completion": "You've learned that numbers can remember and change, but just adding is too boring. We need MORE INTERESTING RECIPES...",
+        "narrative": "Let's compare two different number generators side by side...",
+        "hint": "👀 WHAT TO LOOK FOR: In the plots below, watch for PATTERNS. A predictable generator shows a clear diagonal line (each number relates to the next in an obvious way). A good generator shows scattered dots with no visible pattern. Which one would you want for a dice game?",
+        "completion": "A simple counter is predictable. We need something better!",
         "quiz": {
           "q1": {
             "question": "Why can't we use a simple counter for a dice game?",
@@ -519,25 +532,26 @@
         "completion": "You discovered that multiplication makes numbers grow much faster!",
         "quiz": {
           "q1": {
-            "question": "If you multiply by 1 every step, what happens to randomness?",
-            "optionA": "Perfect randomness",
-            "optionB": "Slower randomness",
-            "optionC": "No change at all - terrible for randomness!",
-            "correct": "Right! Multiplying by 1 does nothing - the number never changes. Useless!",
-            "incorrect": "Think: what is any number times 1?"
+            "question": "Why does multiplication create more unpredictable patterns than addition?",
+            "optionA": "Multiplication makes bigger jumps - small changes have dramatic effects",
+            "optionB": "Addition is actually more unpredictable",
+            "optionC": "They're equally predictable",
+            "correct": "Exactly! Multiplication amplifies changes dramatically. Going from 5 to 6 (×1) is small, but 5×3=15 to 6×3=18 - the gap grows!",
+            "incorrect": "Think about it: adding 1 always adds 1. But multiplying by 3 turns a +1 change into a +3 change!"
           }
         }
       },
       "lesson2_2": {
         "title": "The Giant Number Problem",
         "objective": "Understand overflow and memory limits",
-        "narrative": "What happens if we multiply so many times that the number doesn't fit anymore?",
+        "narrative": "What happens if we multiply so many times that the number doesn't fit anymore? Computers store numbers in fixed-size boxes. When a number gets too big, it OVERFLOWS and wraps back around - just like a car odometer rolling over from 999,999 to 000,000! In our demo, we'll use a small box (0-255) to see this clearly. Real PRNGs use 32-bit boxes (0 to 4 billion), but the principle is the same. This 'accident' is actually USEFUL for PRNGs because it scrambles numbers in surprising ways.",
         "completion": "Computers have fixed-size boxes. When they overflow, they wrap around like a clock!",
         "quiz": {
           "q1": {
             "question": "The number overflowed and wrapped around! Is this a bug or a feature for PRNGs?",
             "optionA": "A bug - we should fix it",
             "optionB": "A feature - it helps create unpredictable patterns!",
+            "optionC": "It doesn't matter - overflow never happens in real programs",
             "correct": "Exactly! Overflow is USEFUL because it scrambles the number in unexpected ways.",
             "incorrect": "Think: does the wrapping make numbers more or less predictable?"
           }
@@ -547,15 +561,16 @@
         "title": "The Cutter (Modulo)",
         "objective": "Understand the modulo operator",
         "narrative": "What if we want a number that never goes past 10? We use THE CUTTER.",
+        "primer": "Here's a secret: PRNG designers love PRIME numbers (like 7, 13, 31, 127). Why? When you use mod 10, patterns like 0-10-20-30 all land on the same spot. But with mod 7 or mod 13, numbers spread out more evenly - primes have no common factors to create shortcuts! This creates longer cycles and less predictable patterns.",
         "completion": "The modulo operator cuts numbers down to size!",
         "quiz": {
           "q1": {
-            "question": "Why do PRNGs often use prime numbers (like 7, 13, 31) instead of round numbers (like 10, 100)?",
-            "optionA": "Prime numbers are prettier",
-            "optionB": "Primes create less obvious patterns and longer cycles",
-            "optionC": "Round numbers are too big",
-            "correct": "Right! Primes help avoid repeating patterns that would make output predictable.",
-            "incorrect": "Think about what makes a sequence feel 'random' vs 'patterned'..."
+            "question": "What does 17 mod 5 equal?",
+            "optionA": "2 - it's the remainder after dividing 17 by 5",
+            "optionB": "3 - because 17 divided by 5 is about 3.4",
+            "optionC": "12 - because 17 minus 5 is 12",
+            "correct": "Correct! 5 goes into 17 three times (5×3=15), leaving a remainder of 2.",
+            "incorrect": "Think: how many times does 5 fit into 17? What's left over?"
           }
         }
       },
@@ -563,6 +578,7 @@
         "title": "Mixing Recipes",
         "objective": "Combine operations (multiply + add)",
         "narrative": "What happens if we use TWO rules at the same time?",
+        "warning": "⚠️ BEWARE of recipe-breaking operations! Some combinations destroy all randomness. For example: any number × 0 = 0. Once you hit zero, you're stuck forever! Can you spot the dangerous operation in the next quiz?",
         "completion": "Combining operations creates more interesting patterns!",
         "quiz": {
           "q1": {
@@ -580,13 +596,15 @@
         "title": "LCG: Your First Real Generator",
         "objective": "Explore a real linear generator through forking",
         "narrative": "Scientists discovered a special recipe called LCG. Let's modify a real one!",
+        "formula": "📐 THE LCG FORMULA: state = (state × multiplier + increment) mod modulus. That's it! Three numbers (multiplier, increment, modulus) define the entire algorithm. Scientists tested MILLIONS of combinations to find ones that produce good randomness. The multiplier 48271 you'll see below was proven to work well through mathematical analysis.",
         "completion": "You've explored a real PRNG algorithm!",
         "quiz": {
           "q1": {
-            "question": "Try changing the LCG multiplier from 1664525 to just 2. What happens to the output quality?",
+            "question": "Try changing the LCG multiplier from 48271 to just 2. What happens to the output quality?",
             "optionA": "The output looks the same - any multiplier works fine",
             "optionB": "The output gets worse - the original number was chosen carefully by mathematicians",
-            "correct": "Exactly! Those specific constants (like 1664525) were tested extensively. Random-looking numbers often work better than simple ones!",
+            "optionC": "The output gets better - smaller numbers are more random",
+            "correct": "Exactly! Those specific constants (like 48271) were tested extensively. Random-looking numbers often work better than simple ones!",
             "incorrect": "Look at the histogram and correlation plot after changing the multiplier. Do the patterns look random?"
           }
         }
@@ -594,7 +612,8 @@
       "lesson2_5_1": {
         "title": "The Guessing Game",
         "objective": "Discover how yes/no questions find numbers fast",
-        "narrative": "Did you know computers only understand two things? YES and NO. That's it! Let's play a guessing game - you pick a number and I'll find it using only yes/no questions. Watch how fast we narrow it down!",
+        "narrative": "Let's play a game! I'm thinking of a number between 1 and 16. How many questions do you need to guess it?",
+        "binaryConnection": "🔗 THE BINARY CONNECTION: You needed exactly 4 questions for 16 numbers. That's not a coincidence! Each YES/NO question is like a BINARY DIGIT (bit): 4 questions = 4 bits = 16 possible values. This is how computers represent numbers - with switches that are either ON (1) or OFF (0). 8 bits = 256 values, 32 bits = over 4 billion!",
         "completion": "With just yes/no questions, you can find any number! This is the foundation of binary thinking.",
         "quiz": {
           "q1": {
@@ -611,14 +630,16 @@
         "title": "Light Switch Numbers",
         "objective": "Introduce 4-bit binary representation",
         "narrative": "Imagine 4 light switches. Each can be ON or OFF. Together, they make a number!",
+        "insight": "🎯 You just explored ALL 16 possible values with only 4 switches! The formula is simple: 2⁴ = 16. Each switch doubles the possibilities: 1 switch = 2 values, 2 switches = 4 values, 3 switches = 8 values, 4 switches = 16 values. This exponential growth is the secret power of binary!",
         "completion": "You can represent any number from 0 to 15 with just 4 switches!",
         "quiz": {
           "q1": {
-            "question": "If you flip just ONE bit, how much can the number change?",
-            "optionA": "A lot! The leftmost bit changes the number by 8",
-            "optionB": "Always changes by exactly 1",
-            "correct": "Right! Position matters - flipping the left bit changes by 8, the right by 1!",
-            "incorrect": "Try flipping different bits and watch what happens to the number."
+            "question": "In a 4-bit number, which bit position has the BIGGEST impact when flipped?",
+            "optionA": "The leftmost bit (worth 8) - it changes the number the most!",
+            "optionB": "The rightmost bit (worth 1) - it's the 'ones' place",
+            "optionC": "All bits have equal impact",
+            "correct": "Right! The leftmost bit is worth 8, so flipping it causes the biggest change!",
+            "incorrect": "Think about place values: in 1111, the left bit is worth 8, the right is worth 1."
           }
         }
       },
@@ -626,14 +647,16 @@
         "title": "More Switches, Bigger Numbers",
         "objective": "Expand to 8 bits, preview 32 bits",
         "narrative": "What if we had MORE switches? We could make BIGGER numbers!",
+        "primer": "Here's the power of bits: 8 bits = 256 possibilities, 16 bits = 65,536, and 32 bits = over 4 BILLION! Each extra bit DOUBLES the possibilities. Real PRNGs use 32 or 64 bits because they need HUGE numbers of possible states - so patterns don't repeat for billions of steps!",
         "completion": "You now understand how computers see numbers. Time to learn how to DANCE with bits!",
         "quiz": {
           "q1": {
-            "question": "With 32 bits, computers can store over 4 BILLION different numbers. Is that enough for a game?",
-            "optionA": "No, games need more numbers",
-            "optionB": "Yes! 4 billion different states means patterns won't repeat for a very long time",
-            "correct": "Exactly! 4 billion possibilities means a player would never see the pattern repeat.",
-            "incorrect": "Think about how long it would take to count to 4 billion..."
+            "question": "Each additional bit DOUBLES the number of possibilities. If 4 bits = 16 values, what do 8 bits give you?",
+            "optionA": "32 values (16 + 16)",
+            "optionB": "256 values (16 × 16, or 2⁸)",
+            "optionC": "64 values (16 × 4)",
+            "correct": "Exactly! Each bit doubles: 4 bits = 16, 5 bits = 32, 6 bits = 64, 7 bits = 128, 8 bits = 256!",
+            "incorrect": "Remember: each new bit DOUBLES the possibilities, not adds to them."
           }
         }
       },
@@ -663,6 +686,7 @@
             "question": "XOR twice with the same number returns the original. How could this be useful?",
             "optionA": "It's not useful at all",
             "optionB": "You can use it to 'hide' and 'reveal' data - like simple encryption!",
+            "optionC": "It only works with prime numbers",
             "correct": "Right! XOR is used in encryption, checksums, and mixing bits in PRNGs.",
             "incorrect": "Think: if A XOR B XOR B = A, what can you do with that property?"
           }
@@ -678,6 +702,7 @@
             "question": "Why do we combine shift and XOR?",
             "optionA": "It makes numbers smaller",
             "optionB": "It creates more unpredictable changes",
+            "optionC": "It makes the code run faster",
             "correct": "Exactly! The combination scrambles the bits effectively.",
             "incorrect": "Think about how each operation affects the pattern."
           }
@@ -686,24 +711,25 @@
       "lesson3_4": {
         "title": "Xorshift: Your Second Real Generator",
         "objective": "Explore Xorshift through forking",
-        "narrative": "Now let's work with a professional generator that uses what you learned.",
+        "narrative": "You've learned the building blocks: shifting moves bits, XOR mixes them. Now let's see them working together in a REAL generator called Xorshift. This algorithm was invented by George Marsaglia in 2003 and uses ONLY shifts and XORs - no multiplication needed! Try changing the shift amounts and watch what happens to the output quality.",
+        "comparisonIntro": "Now that you've explored Xorshift, let's compare it directly with the LCG you learned earlier. Watch the correlation plots side by side - which algorithm produces more scattered (random-looking) dots?",
         "completion": "You've mastered the most powerful operations. Time to build PROFESSIONAL generators!",
         "quiz": {
           "q1": {
-            "question": "DEBUG: This Xorshift produces visible diagonal lines in the correlation plot. Which shift value is likely wrong?",
-            "optionA": "The first shift (too small)",
-            "optionB": "The middle shift - it's probably not mixing bits enough",
-            "optionC": "The last shift (too large)",
-            "correct": "Right! Poor mixing often comes from middle operations not spreading bits well.",
-            "incorrect": "Diagonal lines mean consecutive numbers are too related. What fixes that?",
-            "hint1": "Correlation problems usually mean bits aren't being mixed thoroughly."
+            "question": "What makes Xorshift special compared to LCG?",
+            "optionA": "It uses multiplication which is faster",
+            "optionB": "It only uses shift and XOR operations - no multiplication needed!",
+            "optionC": "It produces truly random numbers from the hardware",
+            "correct": "Exactly! Xorshift achieves good randomness using only simple bit operations, making it very fast.",
+            "incorrect": "Think about what operations Xorshift uses. Did you see any multiplication?"
           }
         }
       },
       "lesson4_1": {
         "title": "Mulberry32: The Industrial Machine",
         "objective": "Explore a real production algorithm through forking",
-        "narrative": "This is Mulberry32, a generator used in professional applications. Let's explore it!",
+        "narrative": "Welcome to Mulberry32 - a generator actually used in games and applications! Notice how it combines everything we've learned: addition creates chaos, multiplication scrambles thoroughly, and XOR with shifted copies mixes the bits. The 'magic constant' 0x6D2B79F5 was found through millions of tests. Let's see what happens when you change it!",
+        "magicConstants": "🔮 MAGIC CONSTANTS EXPLAINED: Why 0x6D2B79F5? These weird hex numbers create what's called the 'avalanche effect' - changing ONE input bit causes roughly HALF of the output bits to flip. Researchers test millions of candidates and keep only those that: 1️⃣ Pass statistical tests 2️⃣ Have good bit-mixing properties 3️⃣ Don't create short cycles. Try changing it to 0x00000001 below and watch the quality collapse!",
         "completion": "You've analyzed a professional-grade PRNG!",
         "quiz": {
           "q1": {
@@ -720,12 +746,14 @@
         "title": "The Quality Lab",
         "objective": "Use the full test suite",
         "narrative": "Scientists use special tests to check if numbers are truly random-looking. Let's use them!",
+        "testTypes": "📊 UNDERSTANDING THE TESTS: **Mean Test** - checks if the average is close to 0.5 (the middle). A biased generator might favor high or low numbers. **Chi-Square Test** - checks if numbers spread evenly across all values. Even with a good average, numbers might cluster in certain ranges. **Correlation Test** - checks if consecutive numbers are related. A bad generator might have patterns like 'high always follows low'. You need to pass ALL tests to be considered random!",
         "completion": "You now know how to evaluate any generator scientifically!",
         "quiz": {
           "q1": {
             "question": "Algorithm A passes the mean test but FAILS chi-square. What does this tell you?",
             "optionA": "The algorithm is perfect",
             "optionB": "The average is right, but numbers cluster in certain ranges instead of spreading evenly",
+            "optionC": "The tests are broken and should be ignored",
             "correct": "Right! Each test catches different problems. You need to pass ALL tests!",
             "incorrect": "Mean test checks average. Chi-square checks distribution. What if average is good but distribution is clumpy?"
           }
@@ -734,19 +762,32 @@
       "lesson4_3": {
         "title": "The Designer's Challenge",
         "objective": "Create your own generator",
-        "narrative": "Now it's YOUR turn to design a number generator!",
-        "completion": "You've created your own PRNG algorithm!"
+        "narrative": "Time to put everything together! You've learned about addition, multiplication, XOR, and shifts. Now design YOUR OWN generator!",
+        "guidance": "🛠️ DESIGN TIPS: Start simple and build up! 1️⃣ Begin with just 2 operations (e.g., multiply then XOR) 2️⃣ Use odd multipliers (3, 5, 7) - even numbers create patterns 3️⃣ Add shift operations to spread changes across bits 4️⃣ Test with the visualizations - look for scattered patterns, not lines 5️⃣ If output looks bad, try different constants. Good designs often use prime-ish numbers!",
+        "completion": "You've become a PRNG designer!",
+        "quiz": {
+          "q1": {
+            "question": "When designing a PRNG, what's the most important thing to consider FIRST?",
+            "optionA": "Making it as complex as possible with many operations",
+            "optionB": "Ensuring each operation actually improves mixing/randomness quality",
+            "optionC": "Using only the newest, trendiest operations",
+            "correct": "Exactly! Each operation should have a purpose. More complexity doesn't mean better quality!",
+            "incorrect": "Think about what you learned: some simple generators beat complex ones. Why?"
+          }
+        }
       },
       "lesson4_4": {
         "title": "The Generator Gallery",
         "objective": "Compare all learned algorithms",
         "narrative": "Let's see how all the generators we've learned compare to each other.",
+        "reflection": "🏆 Look how far you've come! From a simple counter that just added 1, to sophisticated algorithms using multiplication, XOR, and bit shifts. You've seen how each technique improves quality: counters are predictable, LCG adds mixing, Xorshift uses fast bit operations, and Mulberry32 combines everything into a production-ready generator. You're now ready to design your own!",
         "completion": "Congratulations! You understand how computers create numbers that seem random. Workshop unlocked!",
         "quiz": {
           "q1": {
             "question": "Rank these for a GAME: Counter, LCG, Xorshift, Mulberry32. Which matters most?",
             "optionA": "Speed only - games need fast generators",
             "optionB": "Quality AND speed - games need unpredictable numbers that don't slow things down",
+            "optionC": "Quality only - speed doesn't matter for modern computers",
             "correct": "Right! Games need both. Mulberry32/Xorshift win because they're fast AND high quality.",
             "incorrect": "A slow generator hurts performance. A predictable one lets players cheat. You need both!"
           }
@@ -755,7 +796,7 @@
       "lesson5_1": {
         "title": "Multi-State Algorithms",
         "objective": "Understand algorithms with multiple state variables",
-        "narrative": "What if we used MULTIPLE boxes instead of one?",
+        "narrative": "So far, all our generators used ONE state variable. But what if we used MULTIPLE variables that interact with each other? This is like having four dancers instead of one - their interactions create patterns that are much harder to predict. SFC32 uses 4 variables (a, b, c, counter) that constantly mix together, creating 128 bits of state instead of just 32!",
         "completion": "Multiple state variables make algorithms harder to predict!",
         "quiz": {
           "q1": {
@@ -771,13 +812,15 @@
       "lesson5_2": {
         "title": "xoshiro128**: The Modern One",
         "objective": "Explore modern algorithms",
-        "narrative": "This algorithm was created in 2018 by Blackman and Vigna. It's state-of-the-art!",
+        "narrative": "Meet xoshiro128** (pronounced 'zoh-shee-roh'), created in 2018 by Blackman and Vigna. What makes it state-of-the-art? It uses ROTATION instead of just shifts - rotation preserves ALL bits by wrapping them around instead of losing them off the edge. Combined with 128 bits of state across 4 variables, it passes the most rigorous test suites while being incredibly fast. The '**' in the name refers to its scrambler function that further improves output quality.",
+        "algorithmIntro": "Now let's see rotation in action inside a real algorithm! xoshiro128** uses rotation along with 4 state variables that interact in complex ways. Try modifying the rotation amounts and watch how it affects the output quality.",
         "completion": "You've explored one of the most modern PRNG algorithms!",
         "quiz": {
           "q1": {
             "question": "xoshiro uses ROTATION instead of just shifts. Why is rotation better?",
             "optionA": "Rotation preserves ALL bits - nothing is lost. Shifts lose bits off the edge!",
             "optionB": "Rotation is slower but prettier",
+            "optionC": "Rotation and shifts work exactly the same way",
             "correct": "Right! Rotation wraps bits around instead of discarding them, preserving information.",
             "incorrect": "When you shift, bits fall off one end. Where do they go in rotation?"
           }
@@ -786,8 +829,9 @@
       "lesson5_3": {
         "title": "Advanced Test Interpretation",
         "objective": "Deeply understand quality test results",
-        "narrative": "Let's learn what each test really measures and what failures mean.",
-        "completion": "You can now interpret test results like a real cryptographer!",
+        "narrative": "Let's learn what each test actually measures and what failures really mean.",
+        "realWorld": " THE REAL-WORLD GAP: Our tests use ~1,000 samples. But games might call a PRNG millions of times! A generator can pass simple tests but still show patterns after billions of outputs. That's why professionals use TestU01 and PractRand - they run TRILLIONS of tests. If your game seems 'unlucky' despite passing basic tests, the PRNG might have hidden weaknesses that only show up at scale.",
+        "completion": "Now you can read test results like a true cryptographer!",
         "quiz": {
           "q1": {
             "question": "A generator passes all our tests but fails in a real game (players notice patterns). What's missing?",
@@ -802,8 +846,19 @@
       "lesson5_4": {
         "title": "Your Final Project",
         "objective": "Create an original generator and document it",
-        "narrative": "Time to show everything you've learned. Create your masterpiece!",
-        "completion": "🏆 Congratulations! You've completed the advanced course and created your own documented algorithm!"
+        "narrative": "You've traveled from simple counters to multi-state algorithms. You understand shifts, XOR, multiplication, and how they mix bits. Now it's YOUR turn to design a complete PRNG from scratch! Think about: What operations will you use? What constants? How will you ensure good mixing? Document your choices and test your creation!",
+        "rubric": "🎯 SUCCESS CRITERIA for your algorithm: 1️⃣ Use at least 3 different operations (add, multiply, xor, shift, etc.) 2️⃣ Avoid 'killer' operations like multiply by 0 or add 0 3️⃣ Try to pass the mean test (numbers should average around 0.5) 4️⃣ Experiment with different constants - bigger primes often work better! Don't worry about making it perfect - the goal is to UNDERSTAND how the pieces work together.",
+        "completion": "🏆 Congratulations! You've completed the advanced course and created your own documented algorithm!",
+        "quiz": {
+          "q1": {
+            "question": "Reflecting on your journey: What's the MOST important lesson about PRNGs?",
+            "optionA": "The more operations, the better the generator",
+            "optionB": "Quality comes from understanding how operations mix bits, not from complexity alone",
+            "optionC": "Real randomness is impossible, so it doesn't matter what we use",
+            "correct": "Exactly! You've learned that thoughtful design beats blind complexity. That's the mark of a true engineer!",
+            "incorrect": "Think back: which generators performed best? Were they the most complex, or the most thoughtfully designed?"
+          }
+        }
       }
     },
     "microTeaching": {
@@ -832,10 +887,62 @@
         "content": "Moving all bits left or right, like sliding tiles on a board.",
         "insight": "Shift left = multiply by 2. Shift right = divide by 2!"
       },
+      "shiftDemo": {
+        "value": "Number",
+        "amount": "Shift by",
+        "left": "← Left",
+        "right": "→ Right"
+      },
+      "xorDemo": {
+        "valueA": "Value A",
+        "valueB": "Value B",
+        "random": "Random",
+        "explanation": "XOR: If bits are different → 1. If bits are same → 0."
+      },
       "binary": {
         "concept": "Binary Numbers",
         "content": "Computers use just ON and OFF (1 and 0) to represent all numbers.",
         "insight": "With just 8 switches, you can represent 256 different numbers!"
+      },
+      "overflow": {
+        "concept": "Memory Limits",
+        "content": "Computers store numbers in fixed-size boxes. What happens when a number gets too big to fit?",
+        "insight": "When a number overflows, it wraps around like an odometer going from 999,999 to 000,000!"
+      },
+      "multiState": {
+        "concept": "Multiple Variables",
+        "content": "What if instead of ONE dancer, we had FOUR dancers moving together? Their interactions would be much harder to predict!",
+        "insight": "Multiple state variables interact and mix together, creating patterns that are much harder to crack!"
+      },
+      "shiftXorCombo": {
+        "concept": "The Power Combo",
+        "content": "Shift MOVES bits to new positions. XOR MIXES bits together. What happens when you do BOTH? Each bit affects multiple positions, creating a cascade of changes!",
+        "insight": "Shift + XOR = Avalanche Effect. Change one bit and watch MANY bits flip. This is the secret sauce of fast PRNGs!"
+      },
+      "xorshift": {
+        "concept": "The Xorshift Algorithm",
+        "content": "George Marsaglia discovered in 2003 that combining just THREE operations (shift left, shift right, XOR) in the right order creates surprisingly good randomness. No multiplication needed!",
+        "insight": "Xorshift proves that SIMPLE operations combined cleverly can rival complex algorithms. The magic is in the specific shift amounts!"
+      },
+      "binarySearch": {
+        "concept": "Divide and Conquer",
+        "content": "Imagine finding a number between 1-100. You could check 1, 2, 3... Or ask: 'Is it more than 50?' Each yes/no question cuts possibilities in HALF!",
+        "insight": "With yes/no questions, you need only 7 guesses for 1-100. That's the power of halving!"
+      },
+      "avalanche": {
+        "concept": "The Avalanche Effect",
+        "content": "Good PRNGs have a special property: changing just ONE input bit should flip roughly HALF of the output bits. Like a tiny snowball triggering an avalanche!",
+        "insight": "Magic constants like 0x6D2B79F5 were chosen because they maximize this avalanche effect!"
+      },
+      "rotation": {
+        "concept": "Bit Rotation",
+        "content": "Shifting loses bits off the edge. But ROTATION wraps them around! Bits that fall off one side reappear on the other.",
+        "insight": "Rotation preserves ALL information. No bits are ever lost, making it perfect for PRNGs!"
+      },
+      "testInterpretation": {
+        "concept": "Reading Test Results",
+        "content": "Quality tests each check something different. Mean checks average. Chi-square checks distribution. Correlation checks patterns. A generator must pass ALL of them!",
+        "insight": "Failing one test reveals the generator's weakness. Each test is like a detective looking for a different clue!"
       }
     },
     "microTeachingLabel": "Quick Lesson",
@@ -877,7 +984,10 @@
       "title": "Step-by-Step Trace"
     },
     "comparison": {
-      "title": "Algorithm Comparison"
+      "title": "Algorithm Comparison",
+      "meanTest": "Mean Test",
+      "varianceTest": "Variance Test",
+      "score": "Quality Score"
     },
     "worldLesson": "World {world} · Lesson {lesson}",
     "continue": "Continue",
@@ -901,22 +1011,43 @@
       "stepBoth": "Step Both",
       "comparisonIntro": "Compare a simple counter with a real PRNG algorithm. Notice the pattern difference!",
       "comparisonHint": "The counter shows a diagonal line (predictable). Good PRNGs show scattered dots (unpredictable).",
+      "addVsMultiply": {
+        "intro": "Compare how ADDITION vs MULTIPLICATION affect number patterns!",
+        "multiplier": "Multiplier",
+        "addTitle": "Addition Only",
+        "addFormula": "state = state + {n}",
+        "mulTitle": "Multiplication",
+        "mulFormula": "state = state × {n}",
+        "step": "Step Both",
+        "runMany": "Run 20 Steps",
+        "hint": "Notice how addition creates a steady climb, while multiplication jumps around more dramatically!"
+      },
       "overflowExplanation": "When we multiply past {max}, the number wraps around!",
       "multiply": "Multiply ×{n}",
       "forkExplore": "Explore this algorithm by modifying its constants and observing the results.",
+      "tryThis": "Try this experiment:",
       "forkExploreAlgorithm": "Algorithm:",
-      "forkExploreHint": "Try changing the constants. Watch how the quality changes!",
-      "forkExploreHintLcg": "Try changing the multiplier and addend constants. Different values create different patterns!",
-      "forkExploreHintXorshift": "Try changing the shift amounts (13, 17, 5). Watch how bit mixing affects randomness!",
-      "forkExploreHintMulberry": "Experiment with the magic constant and see how output quality changes.",
-      "forkExploreHintMultiState": "This algorithm has multiple state variables. See how they interact together!",
+      "forkExploreHint": "Click 'Edit Constants' above to modify values. Watch how changes affect the output patterns!",
+      "forkExploreHintLcg": "💡 Try this: Change the 'mul const' from 48271 to just 2. Notice how the correlation plot changes from scattered to diagonal lines!",
+      "forkExploreHintXorshift": "💡 Try this: Change one of the shift amounts to 0 or 32. Watch how it breaks the bit mixing and creates visible patterns!",
+      "forkExploreHintMulberry": "💡 Try this: Change 0x6D2B79F5 to 0x00000001. The magic constant was carefully chosen - see what happens without it!",
+      "forkExploreHintMultiState": "💡 This algorithm uses 4 variables working together. Try changing one constant and watch how it affects all state values!",
       "algorithmExplorer": {
         "state": "Current State",
         "output": "Output",
         "step": "Step",
         "timeSeries": "Output Over Time",
         "correlation": "Correlation Plot",
-        "steps": "{count} steps generated"
+        "histogram": "Distribution",
+        "binaryView": "Binary View",
+        "steps": "{count} steps generated",
+        "constants": "Algorithm Constants",
+        "editConstants": "Edit Constants",
+        "doneEditing": "Done",
+        "editHint": "Change values and see how it affects the output. Use hex (0x...) for large numbers.",
+        "modified": "modified",
+        "multiStateInfo": "These variables interact with each other every step",
+        "totalStateBits": "{bits} bits of total state = astronomically more combinations!"
       },
       "qualityLab": {
         "title": "Quality Testing Lab",
@@ -940,10 +1071,30 @@
       },
       "testInterpretation": {
         "title": "Understanding Test Results",
-        "intro": "Learn what each test measures and what failures mean.",
-        "meanExplain": "The Mean test checks if your numbers average to 0.5 (the middle of 0-1 range).",
-        "varianceExplain": "Variance measures how spread out your numbers are.",
-        "chiSquareExplain": "Chi-Square checks if numbers are evenly distributed across all ranges."
+        "intro": "Diagnose what's wrong with these generators based on their test results!",
+        "reference": "📖 Test Reference Guide (click to expand)",
+        "meanExplain": "Checks if numbers average to 0.5 (the middle of 0-1 range).",
+        "varianceExplain": "Measures how spread out your numbers are.",
+        "chiSquareExplain": "Checks if numbers are evenly distributed across all ranges.",
+        "scenario": "Scenario {n}",
+        "question": "What's likely wrong with this generator?",
+        "options": {
+          "clumpy": "Numbers cluster in certain ranges instead of spreading evenly",
+          "biased": "Numbers tend toward high or low values (not centered)",
+          "tooNarrow": "Numbers don't spread out enough (too close together)",
+          "perfect": "Nothing - the generator is working fine"
+        },
+        "explanations": {
+          "clumpy": "Chi-Square failure means uneven distribution - some ranges get too many numbers, others too few.",
+          "biased": "Mean failure indicates the average isn't centered at 0.5, so numbers lean high or low.",
+          "tooNarrow": "Variance failure means numbers cluster too tightly around the mean instead of spreading out."
+        },
+        "correct": "Correct! You diagnosed it right.",
+        "incorrect": "Not quite. Look at which test failed and what it measures.",
+        "nextScenario": "Next Scenario",
+        "allComplete": "Excellent Work!",
+        "summary": "You can now interpret test results like a real PRNG engineer!",
+        "tryAgain": "Practice Again"
       },
       "finalProject": {
         "title": "Your Final Project",
@@ -951,6 +1102,25 @@
         "buildAlgorithm": "Build your algorithm by choosing operations:",
         "qualityScore": "Quality Score",
         "steps": "{count} steps generated"
+      },
+      "seedDemo": {
+        "tryPresets": "Try these preset seeds:",
+        "orTryOwn": "Or try your own seed:",
+        "enterSeed": "Enter seed",
+        "try": "Try",
+        "seedValue": "Seed",
+        "produces": "produces this sequence:",
+        "hint": "Same seed = same sequence. Different seed = different sequence!"
+      },
+      "determinismDemo": {
+        "title": "Two Boxes, Same Seed",
+        "intro": "Watch what happens when two number generators start with the SAME seed and follow the SAME rules.",
+        "boxA": "Box A",
+        "boxB": "Box B",
+        "stepBoth": "Step Both",
+        "identical": "✓ Both boxes produce the EXACT SAME numbers!",
+        "different": "The sequences are different",
+        "hint": "Try different seeds - as long as both boxes start the same, they'll always match!"
       },
       "binaryGame": {
         "thinkOfNumber": "Think of a number between 1 and 16. I'll find it with just yes/no questions!",
@@ -973,12 +1143,38 @@
       "xorExperiment": {
         "intro": "Try different values for A and B. Watch how XOR compares each bit!",
         "result": "A XOR B =",
-        "hint": "Notice: when bits are DIFFERENT → 1, when SAME → 0"
+        "hint": "Notice: when bits are DIFFERENT → 1, when SAME → 0",
+        "reversibilityTitle": "✨ The Magic Property: XOR is Reversible!",
+        "backToA": "Back to A!",
+        "reversibilityHint": "XOR the result with B again, and you get back the original A! This is why XOR is used in encryption."
       },
       "shiftXor": {
         "current": "Current State",
         "formula": "Each step: state ^= state << 7; state ^= state >>> 5",
         "step": "Step"
+      },
+      "rotationVsShift": {
+        "title": "Rotation vs Shift: Why Rotation Wins",
+        "value": "Number",
+        "amount": "Move by",
+        "random": "Random",
+        "original": "Original Value",
+        "shiftLeft": "← Shift Left",
+        "rotateLeft": "↻ Rotate Left",
+        "bitsLost": "Bits fall off the edge!",
+        "bitsPreserved": "Bits wrap around!",
+        "lost": "Lost forever",
+        "wrapped": "Came back",
+        "explanation": "Shift loses bits that fall off the edge. Rotation wraps them around - no information is ever lost! That's why modern PRNGs prefer rotation."
+      },
+      "comparativeTable": {
+        "title": "Algorithm Comparison Summary",
+        "algorithm": "Algorithm",
+        "mean": "Mean",
+        "variance": "Variance",
+        "chiSquare": "Chi²",
+        "quality": "Quality",
+        "legend": "✓ = test passed, ✗ = test failed. More stars = better overall quality."
       }
     },
     "sandbox": {
@@ -994,7 +1190,9 @@
       "value": "Value",
       "reset": "Reset",
       "enterValue": "Enter a number",
-      "set": "Set"
+      "set": "Set",
+      "modBy": "Mod by",
+      "prime": "prime"
     },
     "multiplication": {
       "title": "The Multiplication Table",
@@ -1008,7 +1206,10 @@
       "hex": "Hex",
       "clear": "Clear",
       "max": "Max",
-      "range": "Range: {min} to {max}"
+      "range": "Range: {min} to {max}",
+      "preview32Title": "What about 32 bits?",
+      "preview32Possibilities": "With 32 bits: {count} possible values!",
+      "preview32Explanation": "Real PRNGs use 32 bits (or more) for astronomically more possibilities"
     },
     "calculator": {
       "title": "Step Calculator",
@@ -1030,6 +1231,23 @@
     "counting": {
       "title": "Counting Step by Step",
       "insight": "Adding 1 each time is the simplest transformation. It's predictable - that's why it's NOT random!"
+    },
+    "overflow": {
+      "title": "8-Bit Odometer",
+      "bitLimit": "{bits}-bit limit: 0 to {max}",
+      "wrapped": "Overflow! Wrapped to 0",
+      "nearMax": "Near Max",
+      "tryAdding": "Try adding numbers to see what happens at the limit!",
+      "almostThere": "Almost there! Only {remaining} more until overflow...",
+      "explanation": "The number got too big! Like a car odometer, it wrapped back to 0."
+    },
+    "multiState": {
+      "title": "Four Dancing Variables",
+      "steps": "Steps",
+      "possibleStates": "Possible States",
+      "step": "Step",
+      "mixed": "Variables mixed together!",
+      "insight": "4 variables × 256 values each = over 4 BILLION possible states!"
     }
   }
 }

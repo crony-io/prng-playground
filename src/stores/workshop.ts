@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 import { createVersionedLocalStorage, makeStorageKey } from '@/utils/persistence';
 import type { DslAlgorithmDefinition, DslStateVariable, DslOperation } from '@/types/dsl';
-import { createDefaultAlgorithm, generateOperationId } from '@/types/dsl';
+import { createDefaultAlgorithm, generateOperationId, calculateStateSizeBits } from '@/types/dsl';
 
 const dslOperandSchema = z.object({
   type: z.enum(['const', 'state', 'temp']),
@@ -114,22 +114,7 @@ export const useWorkshopStore = defineStore('workshop', () => {
       return null;
     }
 
-    // Ensure stateSizeBits is preserved/calculated for the fork
-    let stateSizeBits = parent.stateSizeBits;
-    if (stateSizeBits === undefined) {
-      // Calculate from operations: count variables read as 'state' type
-      const stateVarNames = new Set<string>();
-      for (const op of parent.operations) {
-        if (op.left?.type === 'state' && typeof op.left.value === 'string') {
-          stateVarNames.add(op.left.value);
-        }
-        if (op.right?.type === 'state' && typeof op.right.value === 'string') {
-          stateVarNames.add(op.right.value);
-        }
-      }
-      const count = stateVarNames.size > 0 ? stateVarNames.size : parent.stateVariables.length;
-      stateSizeBits = count * 32;
-    }
+    const stateSizeBits = calculateStateSizeBits(parent);
 
     const forked: DslAlgorithmDefinition = {
       ...structuredClone(toRaw(parent)),
@@ -153,11 +138,7 @@ export const useWorkshopStore = defineStore('workshop', () => {
       return;
     }
 
-    const existing = algorithms.value[index];
-    if (!existing) {
-      return;
-    }
-
+    const existing = algorithms.value[index]!;
     const updated: DslAlgorithmDefinition = {
       ...existing,
       ...updates,

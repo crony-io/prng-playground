@@ -27,6 +27,29 @@ export const LIMITS = {
 
   /** Maximum steps per tick for PRNG runner (performance) */
   MAX_STEPS_PER_TICK: 1000,
+
+  // Activity-specific limits (extracted from LessonActivity components)
+
+  /** Maximum counter history size for counter activities */
+  MAX_COUNTER_HISTORY: 50,
+
+  /** Initial counter steps for comparison activities */
+  INITIAL_COUNTER_STEPS: 20,
+
+  /** Maximum value for overflow demo (8-bit simulation) */
+  OVERFLOW_MAX_VALUE: 256,
+
+  /** Maximum overflow history size */
+  OVERFLOW_HISTORY_SIZE: 20,
+
+  /** Default sample count for algorithm comparison */
+  DEFAULT_SAMPLE_COUNT: 100,
+
+  /** Maximum recipe history size */
+  MAX_RECIPE_HISTORY: 10,
+
+  /** Minimum samples required for quality tests */
+  MIN_SAMPLES_FOR_QUALITY_TESTS: 1000,
 } as const;
 
 export type Limits = typeof LIMITS;

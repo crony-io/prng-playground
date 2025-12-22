@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useLearningStore } from '@/stores/learning';
 import LessonNarrative from '@/components/learn/LessonNarrative.vue';
@@ -8,7 +8,7 @@ import LessonProgress from '@/components/learn/LessonProgress.vue';
 import LessonActivity from '@/components/learn/LessonActivity.vue';
 import MicroTeaching from '@/components/learn/MicroTeaching.vue';
 import BadgeDisplay from '@/components/learn/BadgeDisplay.vue';
-import type { LessonStep } from '@/types/lessons';
+import type { LessonStep, MicroTeachingVisualType } from '@/types/lessons';
 import { BADGE_WORLD_MAP, type BadgeType } from '@/components/learn/badges';
 
 const { t } = useI18n();
@@ -46,16 +46,6 @@ const totalSteps = computed(() => lesson.value?.steps.length ?? 0);
 
 const isLastStep = computed(() => currentStepIndex.value >= totalSteps.value - 1);
 const isFirstStep = computed(() => currentStepIndex.value === 0);
-
-type MicroTeachingVisualType =
-  | 'multiplication-grid'
-  | 'candy-distribution'
-  | 'bit-toggle'
-  | 'modulo-wheel'
-  | 'counting'
-  | 'xor-comparison'
-  | 'shift-demo'
-  | 'binary-tree';
 
 const microTeachingVisualType = computed((): MicroTeachingVisualType => {
   if (currentStep.value?.type === 'micro-teaching' && currentStep.value.microTeaching?.visualType) {
@@ -143,16 +133,6 @@ function handleExit() {
 function handleGoBack() {
   learningStore.goBackStep();
 }
-
-watch(
-  () => learningStore.progress.currentLessonId,
-  (lessonId) => {
-    if (!lessonId) {
-      return;
-    }
-  },
-  { immediate: true },
-);
 </script>
 
 <template>

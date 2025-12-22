@@ -10,6 +10,7 @@ import TimeSeriesChart from '@/components/TimeSeriesChart.vue';
 const props = defineProps<{
   lesson: LessonDefinition;
   showVisualization?: 'time-series' | 'bit' | 'none';
+  algorithmId?: string;
 }>();
 
 const { t } = useI18n();
