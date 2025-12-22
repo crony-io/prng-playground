@@ -41,10 +41,14 @@ watch(currentLesson, (newLesson, oldLesson) => {
 
 <template>
   <LessonView v-if="currentLesson" />
-  <div v-else class="learn-view">
-    <header class="learn-header">
-      <h1 class="learn-title">{{ t('learn.title') }}</h1>
-      <p class="learn-subtitle">{{ t('learn.subtitle') }}</p>
+  <div v-else class="mx-auto flex max-w-5xl flex-col gap-8 px-4 py-6 sm:px-6 lg:px-8">
+    <header class="text-center">
+      <h1 class="text-3xl font-bold text-body sm:text-4xl">
+        {{ t('learn.title') }}
+      </h1>
+      <p class="mt-2 text-lg text-muted">
+        {{ t('learn.subtitle') }}
+      </p>
     </header>
 
     <BadgeCollection />
@@ -55,61 +59,13 @@ watch(currentLesson, (newLesson, oldLesson) => {
       @select-lesson="handleSelectLesson"
     />
 
-    <footer class="learn-footer">
-      <button class="reset-button" @click="handleResetProgress">
+    <footer class="flex justify-center border-t border-border pt-8">
+      <button
+        class="inline-flex items-center justify-center rounded-lg border border-border px-4 py-2 text-sm font-medium text-muted transition hover:border-error hover:text-error focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        @click="handleResetProgress"
+      >
         {{ t('learn.resetProgress') }}
       </button>
     </footer>
   </div>
 </template>
-
-<style scoped>
-.learn-view {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.learn-header {
-  text-align: center;
-}
-
-.learn-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--body-color);
-  margin: 0 0 0.5rem 0;
-}
-
-.learn-subtitle {
-  font-size: 1.125rem;
-  color: var(--app-muted);
-  margin: 0;
-}
-
-.learn-footer {
-  display: flex;
-  justify-content: center;
-  padding-top: 2rem;
-  border-top: 1px solid var(--app-border);
-}
-
-.reset-button {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  color: var(--app-muted);
-  background: transparent;
-  border: 1px solid var(--app-border);
-  border-radius: 0.375rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.reset-button:hover {
-  color: var(--app-error);
-  border-color: var(--app-error);
-}
-</style>

@@ -8,6 +8,69 @@
       "description": "Aprende cómo los algoritmos PRNG transforman estado, semilla y entropía — interactivamente."
     }
   },
+  "home": {
+    "hero": {
+      "badge": "Laboratorio de Aprendizaje Interactivo",
+      "title": "Descubre la Magia Detrás de los Números Aleatorios",
+      "subtitle": "Explora cómo las computadoras generan números que parecen aleatorios. Aprende, experimenta y construye tus propios algoritmos — sin experiencia previa necesaria.",
+      "startLearning": "Comenzar a Aprender",
+      "openWorkshop": "Abrir Taller"
+    },
+    "features": {
+      "title": "Lo Que Explorarás",
+      "learn": {
+        "title": "Modo Aprender",
+        "description": "Viaja a través de 6 mundos con lecciones guiadas. Descubre estado, semillas, operaciones binarias y algoritmos PRNG reales paso a paso.",
+        "highlights": {
+          "worlds": "6 mundos progresivos",
+          "badges": "Gana insignias mientras aprendes",
+          "interactive": "Actividades prácticas y cuestionarios"
+        }
+      },
+      "workshop": {
+        "title": "Taller de Algoritmos",
+        "description": "Crea tus propios PRNGs usando un constructor visual seguro o editor de código. Prueba la calidad con herramientas estadísticas reales.",
+        "highlights": {
+          "dsl": "Editores visual y de código",
+          "preview": "Visualización en tiempo real",
+          "tests": "Suite de pruebas de calidad"
+        }
+      },
+      "algorithms": {
+        "title": "Algoritmos Incorporados",
+        "description": "Estudia 7 implementaciones PRNG reales — desde contadores simples hasta generadores listos para producción como SFC32 y Xoshiro128**.",
+        "highlights": {
+          "production": "PRNGs listos para producción",
+          "educational": "Ejemplos educativos",
+          "fork": "Bifurca y modifica cualquier algoritmo"
+        }
+      }
+    },
+    "highlights": {
+      "title": "Construido para Aprender",
+      "safe": {
+        "title": "Seguro por Diseño",
+        "description": "La creación de algoritmos basada en DSL previene la ejecución de código arbitrario. ¡Experimenta libremente!"
+      },
+      "responsive": {
+        "title": "Siempre Responsivo",
+        "description": "Los Web Workers mantienen la interfaz fluida incluso durante cálculos largos."
+      },
+      "languages": {
+        "title": "Múltiples Idiomas",
+        "description": "Disponible en inglés y español. ¡Más próximamente!"
+      },
+      "themes": {
+        "title": "Temas Claro y Oscuro",
+        "description": "Elige tu apariencia preferida para un aprendizaje cómodo."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para Comenzar?",
+      "description": "Comienza con los fundamentos o salta directo al Taller si te sientes aventurero.",
+      "beginJourney": "Comienza Tu Viaje"
+    }
+  },
   "common": {
     "generate": "Generar",
     "copy": "Copiar",
@@ -196,7 +259,69 @@
     }
   },
   "about": {
-    "description": "Aprende cómo los algoritmos PRNG transforman estado, semilla y entropía — interactivamente."
+    "title": "Acerca de PRNG School",
+    "intro": {
+      "title": "¿Qué es PRNG School?",
+      "description": "PRNG School es un laboratorio de aprendizaje interactivo para explorar generadores de números pseudoaleatorios. Está diseñado para el descubrimiento práctico — entender cómo funcionan los PRNGs, experimentar con parámetros e incluso construir tus propios algoritmos.",
+      "disclaimer": "Esta es una herramienta educativa. Las implementaciones y análisis son para aprendizaje, no para uso en producción o criptográfico."
+    },
+    "features": {
+      "title": "Características",
+      "learnMode": {
+        "title": "Modo Aprender",
+        "description": "Lecciones estructuradas con seguimiento de progreso a través de 6 mundos, desde conceptos básicos de estado hasta algoritmos multi-estado avanzados."
+      },
+      "workshop": {
+        "title": "Taller",
+        "description": "Crea y prueba algoritmos PRNG personalizados usando un DSL restringido con modos de edición visual y código."
+      },
+      "algorithms": {
+        "title": "Algoritmos Incorporados",
+        "description": "Estudia implementaciones de SFC32, Mulberry32, SplitMix32, Xoshiro128**, Xorshift32, LCG y Contador Simple."
+      },
+      "visualization": {
+        "title": "Visualización",
+        "description": "Gráficos en tiempo real incluyendo series temporales, gráficos de correlación e histogramas de distribución."
+      },
+      "qualityTests": {
+        "title": "Pruebas de Calidad",
+        "description": "Pruebas estadísticas incluyendo media, varianza, chi-cuadrado y análisis de sesgo de bits."
+      },
+      "i18n": {
+        "title": "Internacionalización",
+        "description": "Soporte completo para idiomas inglés y español."
+      }
+    },
+    "technical": {
+      "title": "Detalles Técnicos",
+      "stack": {
+        "title": "Stack Tecnológico",
+        "items": {
+          "vue": "Vue 3 con Composition API",
+          "pinia": "Pinia para gestión de estado",
+          "tailwind": "Tailwind CSS 4",
+          "vite": "Herramienta de build Vite 7",
+          "typescript": "TypeScript",
+          "zod": "Validación de esquemas Zod",
+          "workers": "Web Workers para ejecución aislada"
+        }
+      },
+      "architecture": {
+        "title": "Arquitectura",
+        "items": {
+          "clientOnly": "Completamente del lado del cliente — sin backend requerido",
+          "noRouter": "Navegación basada en store (sin vue-router)",
+          "dsl": "Creación de algoritmos basada en DSL para seguridad",
+          "persistence": "localStorage versionado con migraciones de esquema"
+        }
+      }
+    },
+    "credits": {
+      "title": "Créditos y Licencia",
+      "aiAssisted": "Este proyecto fue desarrollado con la asistencia de herramientas de IA.",
+      "license": "Liberado bajo la Licencia Pública General Affero de GNU v3.0 (AGPL-3.0).",
+      "openSource": "Código abierto en GitHub"
+    }
   },
   "algorithms": {
     "tags": {

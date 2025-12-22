@@ -8,6 +8,69 @@
       "description": "Learn how PRNG algorithms transform state, seed, and entropy — interactively."
     }
   },
+  "home": {
+    "hero": {
+      "badge": "Interactive Learning Lab",
+      "title": "Discover the Magic Behind Random Numbers",
+      "subtitle": "Explore how computers generate numbers that seem random. Learn, experiment, and build your own algorithms — no prior experience needed.",
+      "startLearning": "Start Learning",
+      "openWorkshop": "Open Workshop"
+    },
+    "features": {
+      "title": "What You'll Explore",
+      "learn": {
+        "title": "Learn Mode",
+        "description": "Journey through 6 worlds with guided lessons. Discover state, seeds, binary operations, and real PRNG algorithms step by step.",
+        "highlights": {
+          "worlds": "6 progressive worlds",
+          "badges": "Earn badges as you learn",
+          "interactive": "Hands-on activities & quizzes"
+        }
+      },
+      "workshop": {
+        "title": "Algorithm Workshop",
+        "description": "Create your own PRNGs using a safe visual builder or code editor. Test quality with real statistical tools.",
+        "highlights": {
+          "dsl": "Visual & code editors",
+          "preview": "Real-time visualization",
+          "tests": "Quality test suite"
+        }
+      },
+      "algorithms": {
+        "title": "Built-in Algorithms",
+        "description": "Study 7 real PRNG implementations — from simple counters to production-ready generators like SFC32 and Xoshiro128**.",
+        "highlights": {
+          "production": "Production-ready PRNGs",
+          "educational": "Educational examples",
+          "fork": "Fork & modify any algorithm"
+        }
+      }
+    },
+    "highlights": {
+      "title": "Built for Learning",
+      "safe": {
+        "title": "Safe by Design",
+        "description": "DSL-based algorithm creation prevents arbitrary code execution. Experiment freely!"
+      },
+      "responsive": {
+        "title": "Always Responsive",
+        "description": "Web Workers keep the UI smooth even during long computations."
+      },
+      "languages": {
+        "title": "Multiple Languages",
+        "description": "Available in English and Spanish. More coming soon!"
+      },
+      "themes": {
+        "title": "Light & Dark Themes",
+        "description": "Choose your preferred appearance for comfortable learning."
+      }
+    },
+    "cta": {
+      "title": "Ready to Begin?",
+      "description": "Start with the fundamentals or jump straight into the Workshop if you're feeling adventurous.",
+      "beginJourney": "Begin Your Journey"
+    }
+  },
   "common": {
     "generate": "Generate",
     "copy": "Copy",
@@ -205,7 +268,69 @@
     }
   },
   "about": {
-    "description": "Learn how PRNG algorithms transform state, seed, and entropy — interactively."
+    "title": "About PRNG School",
+    "intro": {
+      "title": "What is PRNG School?",
+      "description": "PRNG School is an interactive learning lab for exploring pseudorandom number generators. It's designed for hands-on discovery — understanding how PRNGs work, experimenting with parameters, and even building your own algorithms.",
+      "disclaimer": "This is an educational tool. Implementations and analyses are for learning, not production or cryptographic use."
+    },
+    "features": {
+      "title": "Features",
+      "learnMode": {
+        "title": "Learn Mode",
+        "description": "Structured lessons with progress tracking across 6 worlds, from basic state concepts to advanced multi-state algorithms."
+      },
+      "workshop": {
+        "title": "Workshop",
+        "description": "Create and test custom PRNG algorithms using a constrained DSL with visual and code editing modes."
+      },
+      "algorithms": {
+        "title": "Built-in Algorithms",
+        "description": "Study SFC32, Mulberry32, SplitMix32, Xoshiro128**, Xorshift32, LCG, and Simple Counter implementations."
+      },
+      "visualization": {
+        "title": "Visualization",
+        "description": "Real-time charts including time series, correlation plots, and distribution histograms."
+      },
+      "qualityTests": {
+        "title": "Quality Tests",
+        "description": "Statistical tests including mean, variance, chi-square, and bit bias analysis."
+      },
+      "i18n": {
+        "title": "Internationalization",
+        "description": "Full support for English and Spanish languages."
+      }
+    },
+    "technical": {
+      "title": "Technical Details",
+      "stack": {
+        "title": "Tech Stack",
+        "items": {
+          "vue": "Vue 3 with Composition API",
+          "pinia": "Pinia for state management",
+          "tailwind": "Tailwind CSS 4",
+          "vite": "Vite 7 build tool",
+          "typescript": "TypeScript",
+          "zod": "Zod schema validation",
+          "workers": "Web Workers for isolated execution"
+        }
+      },
+      "architecture": {
+        "title": "Architecture",
+        "items": {
+          "clientOnly": "Entirely client-side — no backend required",
+          "noRouter": "Store-driven navigation (no vue-router)",
+          "dsl": "DSL-based algorithm creation for safety",
+          "persistence": "Versioned localStorage with schema migrations"
+        }
+      }
+    },
+    "credits": {
+      "title": "Credits & License",
+      "aiAssisted": "This project was developed with the assistance of AI tools.",
+      "license": "Released under the GNU Affero General Public License v3.0 (AGPL-3.0).",
+      "openSource": "Open source on GitHub"
+    }
   },
   "algorithms": {
     "tags": {
