@@ -113,7 +113,7 @@ function handleActiveViewChange(value: string | number): void {
         </nav>
 
         <!-- Mobile Controls -->
-        <div class="flex items-center justify-between pt-2 border-t border-border">
+        <div class="flex items-center justify-end pt-2 border-t border-border">
           <LanguageSelector />
           <ThemeSelector />
         </div>

@@ -143,45 +143,12 @@ export const OPERATION_META: Record<DslOperationType, OperationMeta> = {
   },
 };
 
-/**
- * Legacy interface for backward compatibility.
- * Components using getOperationDoc() will still work.
- */
-export interface OperationDoc {
-  symbol: string;
-  name: string;
-  brief: string;
-  detailed: string;
-  example: string;
-  category: OperationCategory;
-  needsRight: boolean;
-  usesAmount: boolean;
-}
 
 /**
  * Get the metadata for an operation type.
  */
 export function getOperationMeta(op: DslOperationType): OperationMeta {
   return OPERATION_META[op];
-}
-
-/**
- * Legacy function for backward compatibility.
- * Returns a stub OperationDoc with symbol and metadata.
- * For translated text, use i18n with getOperationMeta().i18nKey
- */
-export function getOperationDoc(op: DslOperationType): OperationDoc {
-  const meta = OPERATION_META[op];
-  return {
-    symbol: meta.symbol,
-    name: op,
-    brief: '',
-    detailed: '',
-    example: '',
-    category: meta.category,
-    needsRight: meta.needsRight,
-    usesAmount: meta.usesAmount,
-  };
 }
 
 /**
