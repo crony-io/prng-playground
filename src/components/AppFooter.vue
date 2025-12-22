@@ -3,7 +3,7 @@
     <div class="mx-auto p-4">
       <div class="flex items-center justify-end">
         <a
-          href="https://github.com/crony-io/"
+          href="https://github.com/crony-io/prng-playground"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 rounded-lg border border-stone-300 dark:border-stone-600/50 bg-white dark:bg-stone-900 px-3 py-2 text-sm font-medium text-stone-700 dark:text-stone-200 transition hover:border-stone-400 dark:hover:border-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800"

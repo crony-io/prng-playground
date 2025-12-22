@@ -2,6 +2,8 @@
 
 An interactive learning lab for exploring pseudorandom number generators (PRNGs).
 
+**Live Demo:** [prng-playground.vercel.app](https://prng-playground.vercel.app)
+
 ## Disclaimer
 
 **This is a proof of concept.** The implementations and statistical analyses are intended for educational exploration, not production use or cryptographic applications.
@@ -84,6 +86,10 @@ src/
   views/          # Page-level components
   workers/        # Web Worker scripts
 ```
+
+## Contributing
+
+Contributions are welcome. Feel free to open issues or submit pull requests.
 
 ## License
 
