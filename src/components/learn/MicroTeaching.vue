@@ -9,6 +9,10 @@ import XorMicroTeaching from '@/components/learn/XorMicroTeaching.vue';
 import ModuloWheel from '@/components/learn/ModuloWheel.vue';
 import OverflowVisual from '@/components/learn/OverflowVisual.vue';
 import MultiStateVisual from '@/components/learn/MultiStateVisual.vue';
+import BinarySearchVisual from '@/components/learn/BinarySearchVisual.vue';
+import AvalancheVisual from '@/components/learn/AvalancheVisual.vue';
+import RotationMicroTeaching from '@/components/learn/RotationMicroTeaching.vue';
+import TestResultsVisual from '@/components/learn/TestResultsVisual.vue';
 
 defineProps<{
   conceptKey: string;
@@ -22,7 +26,11 @@ defineProps<{
     | 'shift-demo'
     | 'binary-tree'
     | 'overflow'
-    | 'multi-state';
+    | 'multi-state'
+    | 'binary-search'
+    | 'avalanche'
+    | 'rotation'
+    | 'test-results';
   contentKey?: string;
   insightKey?: string;
 }>();
@@ -78,6 +86,22 @@ const { t } = useI18n();
 
       <template v-else-if="visualType === 'multi-state'">
         <MultiStateVisual />
+      </template>
+
+      <template v-else-if="visualType === 'binary-search'">
+        <BinarySearchVisual />
+      </template>
+
+      <template v-else-if="visualType === 'avalanche'">
+        <AvalancheVisual />
+      </template>
+
+      <template v-else-if="visualType === 'rotation'">
+        <RotationMicroTeaching />
+      </template>
+
+      <template v-else-if="visualType === 'test-results'">
+        <TestResultsVisual />
       </template>
     </div>
 

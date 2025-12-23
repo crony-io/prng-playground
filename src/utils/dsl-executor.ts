@@ -5,7 +5,28 @@
 
 import { LIMITS } from '@/constants/limits';
 import type { DslAlgorithmDefinition, DslOperand, DslOperation } from '@/types/dsl';
-import { i18n } from '@/i18n';
+
+/**
+ * Safe translation function that works in both main thread and Web Worker.
+ * Falls back to English messages when i18n is not available (e.g., in workers).
+ */
+function safeT(key: string, params?: Record<string, unknown>): string {
+  // Fallback messages for worker context
+  const fallbacks: Record<string, string> = {
+    'dsl.error.unknownVariable': `Unknown variable: ${params?.variable ?? 'unknown'}`,
+    'dsl.error.unknownOperation': `Unknown operation: ${params?.operation ?? 'unknown'}`,
+    'dsl.error.tooManyOperations': 'Too many operations in a single step',
+    'dsl.error.outputVariableNotFound': `Output variable not found: ${params?.variable ?? 'unknown'}`,
+    'dsl.error.unknown': 'Unknown error',
+    'dsl.validate.nameRequired': 'Algorithm name is required',
+    'dsl.validate.stateRequired': 'At least one state variable is required',
+    'dsl.validate.operationRequired': 'At least one operation is required',
+    'dsl.validate.outputVariableNotFound': `Output variable not found: ${params?.variable ?? 'unknown'}`,
+    'dsl.validate.undefinedVariable': `Undefined variable: ${params?.variable ?? 'unknown'}`,
+  };
+
+  return fallbacks[key] ?? key;
+}
 
 export interface DslExecutionState {
   [key: string]: number;
@@ -42,7 +63,7 @@ function resolveOperand(operand: DslOperand, state: DslExecutionState): number {
   }
   const val = state[operand.value as string];
   if (val === undefined) {
-    throw new Error(i18n.global.t('dsl.error.unknownVariable', { variable: operand.value }));
+    throw new Error(safeT('dsl.error.unknownVariable', { variable: operand.value }));
   }
   return val >>> 0;
 }
@@ -102,7 +123,7 @@ function computeOperationResult(
     case 'assign':
       return { result: left, resolvedAmount: amount };
     default:
-      throw new Error(i18n.global.t('dsl.error.unknownOperation', { operation: op.op }));
+      throw new Error(safeT('dsl.error.unknownOperation', { operation: op.op }));
   }
 }
 
@@ -158,7 +179,7 @@ export function executeStep(
 
   for (const operation of algorithm.operations) {
     if (operationCount >= MAX_OPERATIONS_PER_STEP) {
-      throw new Error(i18n.global.t('dsl.error.tooManyOperations'));
+      throw new Error(safeT('dsl.error.tooManyOperations'));
     }
     executeOperation(operation, newState);
     operationCount++;
@@ -167,7 +188,7 @@ export function executeStep(
   const outputValue = newState[algorithm.outputVariable];
   if (outputValue === undefined) {
     throw new Error(
-      i18n.global.t('dsl.error.outputVariableNotFound', { variable: algorithm.outputVariable }),
+      safeT('dsl.error.outputVariableNotFound', { variable: algorithm.outputVariable }),
     );
   }
 
@@ -187,7 +208,7 @@ export function executeStepWithTrace(
 
   for (const operation of algorithm.operations) {
     if (operationCount >= MAX_OPERATIONS_PER_STEP) {
-      throw new Error(i18n.global.t('dsl.error.tooManyOperations'));
+      throw new Error(safeT('dsl.error.tooManyOperations'));
     }
     trace.push(executeOperationWithTrace(operation, newState));
     operationCount++;
@@ -196,7 +217,7 @@ export function executeStepWithTrace(
   const outputValue = newState[algorithm.outputVariable];
   if (outputValue === undefined) {
     throw new Error(
-      i18n.global.t('dsl.error.outputVariableNotFound', { variable: algorithm.outputVariable }),
+      safeT('dsl.error.outputVariableNotFound', { variable: algorithm.outputVariable }),
     );
   }
 
@@ -214,31 +235,31 @@ export function validateAlgorithm(algorithm: DslAlgorithmDefinition): {
   const errors: string[] = [];
 
   if (!algorithm.name.trim()) {
-    errors.push(i18n.global.t('dsl.validate.nameRequired'));
+    errors.push(safeT('dsl.validate.nameRequired'));
   }
 
   if (algorithm.stateVariables.length === 0) {
-    errors.push(i18n.global.t('dsl.validate.stateRequired'));
+    errors.push(safeT('dsl.validate.stateRequired'));
   }
 
   if (algorithm.operations.length === 0) {
-    errors.push(i18n.global.t('dsl.validate.operationRequired'));
+    errors.push(safeT('dsl.validate.operationRequired'));
   }
 
   const stateNames = new Set(algorithm.stateVariables.map((v) => v.name));
 
   if (!stateNames.has(algorithm.outputVariable)) {
     errors.push(
-      i18n.global.t('dsl.validate.outputVariableNotFound', { variable: algorithm.outputVariable }),
+      safeT('dsl.validate.outputVariableNotFound', { variable: algorithm.outputVariable }),
     );
   }
 
   for (const op of algorithm.operations) {
     if (op.left?.type === 'state' && !stateNames.has(op.left.value as string)) {
-      errors.push(i18n.global.t('dsl.validate.undefinedVariable', { variable: op.left.value }));
+      errors.push(safeT('dsl.validate.undefinedVariable', { variable: op.left.value }));
     }
     if (op.right?.type === 'state' && !stateNames.has(op.right.value as string)) {
-      errors.push(i18n.global.t('dsl.validate.undefinedVariable', { variable: op.right.value }));
+      errors.push(safeT('dsl.validate.undefinedVariable', { variable: op.right.value }));
     }
   }
 
@@ -266,7 +287,7 @@ export function testAlgorithm(
     return {
       success: false,
       samples: [],
-      error: err instanceof Error ? err.message : i18n.global.t('dsl.error.unknown'),
+      error: err instanceof Error ? err.message : safeT('dsl.error.unknown'),
     };
   }
 }

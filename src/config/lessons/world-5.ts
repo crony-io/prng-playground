@@ -86,7 +86,7 @@ export const LESSON_5_2: LessonDefinition = {
       type: 'micro-teaching',
       microTeaching: {
         conceptKey: 'learn.microTeaching.rotation.concept',
-        visualType: 'shift-demo',
+        visualType: 'rotation',
         contentKey: 'learn.microTeaching.rotation.content',
         insightKey: 'learn.microTeaching.rotation.insight',
       },
@@ -158,7 +158,7 @@ export const LESSON_5_3: LessonDefinition = {
       type: 'micro-teaching',
       microTeaching: {
         conceptKey: 'learn.microTeaching.testInterpretation.concept',
-        visualType: 'counting',
+        visualType: 'test-results',
         contentKey: 'learn.microTeaching.testInterpretation.content',
         insightKey: 'learn.microTeaching.testInterpretation.insight',
       },

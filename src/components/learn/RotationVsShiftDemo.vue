@@ -41,7 +41,9 @@ function randomize() {
 </script>
 
 <template>
-  <div class="flex flex-col gap-5 items-center w-full max-w-lg p-4 glass rounded-xl">
+  <div
+    class="flex flex-col gap-5 items-center w-full max-w-lg p-3 sm:p-4 glass rounded-xl overflow-x-auto"
+  >
     <h3 class="text-lg font-semibold text-primary m-0">
       {{ t('learn.activities.rotationVsShift.title') }}
     </h3>
@@ -82,7 +84,7 @@ function randomize() {
           <span
             v-for="(bit, idx) in binaryOriginal"
             :key="'orig-' + idx"
-            class="w-7 h-8 flex items-center justify-center rounded text-sm font-bold font-mono"
+            class="w-5 sm:w-7 h-6 sm:h-8 flex items-center justify-center rounded text-xs sm:text-sm font-bold font-mono"
             :class="bit === '1' ? 'bg-primary text-page' : 'bg-surface text-muted'"
           >
             {{ bit }}
@@ -92,7 +94,7 @@ function randomize() {
     </div>
 
     <!-- Comparison Grid -->
-    <div class="grid grid-cols-2 gap-4 w-full">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full">
       <!-- Shift Left -->
       <div
         class="flex flex-col items-center gap-2 p-3 bg-surface/50 rounded-lg border border-red-500/30"
@@ -112,7 +114,7 @@ function randomize() {
             <span
               v-for="(bit, idx) in binaryShifted"
               :key="'shift-' + idx"
-              class="w-7 h-8 flex items-center justify-center rounded text-sm font-bold font-mono"
+              class="w-5 sm:w-7 h-6 sm:h-8 flex items-center justify-center rounded text-xs sm:text-sm font-bold font-mono"
               :class="bit === '1' ? 'bg-red-500 text-page' : 'bg-surface text-muted'"
             >
               {{ bit }}
@@ -145,7 +147,7 @@ function randomize() {
             <span
               v-for="(bit, idx) in binaryRotated"
               :key="'rot-' + idx"
-              class="w-7 h-8 flex items-center justify-center rounded text-sm font-bold font-mono"
+              class="w-5 sm:w-7 h-6 sm:h-8 flex items-center justify-center rounded text-xs sm:text-sm font-bold font-mono"
               :class="bit === '1' ? 'bg-green-500 text-page' : 'bg-surface text-muted'"
             >
               {{ bit }}

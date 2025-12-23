@@ -26,7 +26,7 @@ export const LESSON_4_1: LessonDefinition = {
       type: 'micro-teaching',
       microTeaching: {
         conceptKey: 'learn.microTeaching.avalanche.concept',
-        visualType: 'xor-comparison',
+        visualType: 'avalanche',
         contentKey: 'learn.microTeaching.avalanche.content',
         insightKey: 'learn.microTeaching.avalanche.insight',
       },

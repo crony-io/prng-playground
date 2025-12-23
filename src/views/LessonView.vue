@@ -19,11 +19,15 @@ const lessonProgress = computed(() => learningStore.currentLessonProgress);
 
 // Get world and lesson numbers for display
 const worldNumber = computed(() => {
-  if (!lesson.value) {
+  if (!lesson.value?.worldId) {
     return '';
   }
-  const world = learningStore.worldsWithProgress.find((w) => w.id === lesson.value!.worldId);
-  return world?.order ?? '';
+  // Extract from ID: 'world-2-5' → '2.5', 'world-3' → '3'
+  const match = lesson.value.worldId.match(/world-(\d+(?:-\d+)?)/);
+  if (match?.[1]) {
+    return match[1].replace('-', '.');
+  }
+  return '';
 });
 
 const lessonNumber = computed(() => {

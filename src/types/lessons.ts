@@ -33,7 +33,11 @@ export type MicroTeachingVisualType =
   | 'shift-demo'
   | 'binary-tree'
   | 'overflow'
-  | 'multi-state';
+  | 'multi-state'
+  | 'binary-search'
+  | 'avalanche'
+  | 'rotation'
+  | 'test-results';
 
 /**
  * Micro-teaching content for prerequisite concepts

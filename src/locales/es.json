@@ -213,6 +213,15 @@
       "label": "Tamaño de Muestra"
     },
     "controls": {
+      "modulo": {
+        "title": "Modulo {mod}",
+        "value": "Valor",
+        "enterValue": "Ingresa valor",
+        "set": "Set",
+        "reset": "Reset",
+        "modBy": "Mod por",
+        "prime": "Primo"
+      },
       "step": "Paso",
       "run": "Ejecutar",
       "autorun": "Auto",
@@ -600,8 +609,8 @@
         "quiz": {
           "q1": {
             "question": "¿Qué es una semilla?",
-            "optionA": "Una planta",
-            "optionB": "El número con el que empieza la caja",
+            "optionA": "El número con el que empieza la caja",
+            "optionB": "Una planta",
             "optionC": "Un tipo de magia",
             "correct": "¡Exacto! La semilla es el número inicial.",
             "incorrect": "Piensa en qué número ponemos primero en la caja."
@@ -1043,22 +1052,61 @@
       "binarySearch": {
         "concept": "Divide y Vencerás",
         "content": "Imagina encontrar un número entre 1-100. Podrías probar 1, 2, 3... O preguntar: '¿Es mayor que 50?' ¡Cada pregunta sí/no corta las posibilidades a la MITAD!",
-        "insight": "Con preguntas sí/no, solo necesitas 7 intentos para 1-100. ¡Ese es el poder de dividir a la mitad!"
+        "insight": "Con preguntas sí/no, solo necesitas 7 intentos para 1-100. ¡Ese es el poder de dividir a la mitad!",
+        "findNumber": "Encuentra el número:",
+        "range": "Rango",
+        "possibilities": "posibilidades",
+        "nextGuess": "Siguiente intento (medio):",
+        "found": "¡Encontrado!",
+        "guesses": "intentos",
+        "guess": "Adivinar"
       },
       "avalanche": {
         "concept": "El Efecto Avalancha",
         "content": "Los buenos PRNGs tienen una propiedad especial: cambiar solo UN bit de entrada debería cambiar aproximadamente la MITAD de los bits de salida. ¡Como una pequeña bola de nieve desatando una avalancha!",
-        "insight": "¡Las constantes mágicas como 0x6D2B79F5 fueron elegidas porque maximizan este efecto avalancha!"
+        "insight": "¡Las constantes mágicas como 0x6D2B79F5 fueron elegidas porque maximizan este efecto avalancha!",
+        "input": "Entrada",
+        "flipBit": "Invertir bit #",
+        "random": "Aleatorio",
+        "inputChange": "Entrada: 1 bit cambiado",
+        "bitFlipped": "bit invertido",
+        "hashFunction": "Función hash",
+        "outputChange": "Salida: ¡muchos bits cambiados!",
+        "bitsChanged": "bits cambiados"
       },
       "rotation": {
         "concept": "Rotación de Bits",
         "content": "El desplazamiento pierde bits por el borde. ¡Pero la ROTACIÓN los envuelve! Los bits que caen por un lado reaparecen en el otro.",
-        "insight": "La rotación preserva TODA la información. Nunca se pierden bits, ¡haciéndola perfecta para PRNGs!"
+        "insight": "La rotación preserva TODA la información. Nunca se pierden bits, ¡haciéndola perfecta para PRNGs!",
+        "value": "Valor",
+        "amount": "Cantidad",
+        "random": "Aleatorio",
+        "shift": "Desplazar",
+        "rotate": "Rotar",
+        "losesBits": "pierde bits",
+        "keepsBits": "mantiene bits",
+        "lost": "Perdido",
+        "wrapped": "Envuelto"
       },
       "testInterpretation": {
         "concept": "Leyendo Resultados de Pruebas",
         "content": "Las pruebas de calidad verifican cosas diferentes. Media verifica promedio. Chi-cuadrado verifica distribución. Correlación verifica patrones. ¡Un generador debe pasar TODAS!",
         "insight": "Fallar una prueba revela la debilidad del generador. ¡Cada prueba es como un detective buscando una pista diferente!"
+      },
+      "testResults": {
+        "uniformity": "Prueba de Uniformidad",
+        "correlation": "Prueba de Correlación",
+        "periodLength": "Longitud del Período",
+        "bitBalance": "Balance de Bits",
+        "testsPassed": "pruebas pasadas",
+        "overallQuality": "Calidad general",
+        "good": "Buena",
+        "warning": "Necesita Mejoras",
+        "poor": "Pobre",
+        "score": "Puntuación",
+        "threshold": "Umbral",
+        "simulateNewAlgorithm": "Simular Nuevo Algoritmo",
+        "insight": "La línea amarilla muestra el umbral de aprobación. Verde significa aprobado, rojo significa reprobado."
       }
     },
     "microTeachingLabel": "Mini Lección",
@@ -1305,10 +1353,10 @@
       "title": "La Rueda del Módulo (mod {mod})",
       "value": "Valor",
       "reset": "Reiniciar",
-      "modBy": "Mod por",
-      "prime": "primo",
       "enterValue": "Ingresa un número",
-      "set": "Establecer"
+      "set": "Establecer",
+      "modBy": "Mod por",
+      "prime": "primo"
     },
     "multiplication": {
       "title": "La Tabla de Multiplicar",

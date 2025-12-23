@@ -1052,22 +1052,61 @@
       "binarySearch": {
         "concept": "Divide and Conquer",
         "content": "Imagine finding a number between 1-100. You could check 1, 2, 3... Or ask: 'Is it more than 50?' Each yes/no question cuts possibilities in HALF!",
-        "insight": "With yes/no questions, you need only 7 guesses for 1-100. That's the power of halving!"
+        "insight": "With yes/no questions, you need only 7 guesses for 1-100. That's the power of halving!",
+        "findNumber": "Find the number:",
+        "range": "Range",
+        "possibilities": "possibilities",
+        "nextGuess": "Next guess (middle):",
+        "found": "Found it!",
+        "guesses": "guesses",
+        "guess": "Guess"
       },
       "avalanche": {
         "concept": "The Avalanche Effect",
         "content": "Good PRNGs have a special property: changing just ONE input bit should flip roughly HALF of the output bits. Like a tiny snowball triggering an avalanche!",
-        "insight": "Magic constants like 0x6D2B79F5 were chosen because they maximize this avalanche effect!"
+        "insight": "Magic constants like 0x6D2B79F5 were chosen because they maximize this avalanche effect!",
+        "input": "Input",
+        "flipBit": "Flip bit #",
+        "random": "Random",
+        "inputChange": "Input: 1 bit changed",
+        "bitFlipped": "bit flipped",
+        "hashFunction": "Hash function",
+        "outputChange": "Output: many bits changed!",
+        "bitsChanged": "bits changed"
       },
       "rotation": {
         "concept": "Bit Rotation",
         "content": "Shifting loses bits off the edge. But ROTATION wraps them around! Bits that fall off one side reappear on the other.",
-        "insight": "Rotation preserves ALL information. No bits are ever lost, making it perfect for PRNGs!"
+        "insight": "Rotation preserves ALL information. No bits are ever lost, making it perfect for PRNGs!",
+        "value": "Value",
+        "amount": "Amount",
+        "random": "Random",
+        "shift": "Shift",
+        "rotate": "Rotate",
+        "losesBits": "loses bits",
+        "keepsBits": "keeps bits",
+        "lost": "Lost",
+        "wrapped": "Wrapped"
       },
       "testInterpretation": {
         "concept": "Reading Test Results",
         "content": "Quality tests each check something different. Mean checks average. Chi-square checks distribution. Correlation checks patterns. A generator must pass ALL of them!",
         "insight": "Failing one test reveals the generator's weakness. Each test is like a detective looking for a different clue!"
+      },
+      "testResults": {
+        "uniformity": "Uniformity Test",
+        "correlation": "Correlation Test",
+        "periodLength": "Period Length",
+        "bitBalance": "Bit Balance",
+        "testsPassed": "tests passed",
+        "overallQuality": "Overall quality",
+        "good": "Good",
+        "warning": "Needs Work",
+        "poor": "Poor",
+        "score": "Score",
+        "threshold": "Threshold",
+        "simulateNewAlgorithm": "Simulate New Algorithm",
+        "insight": "Yellow line shows the passing threshold. Green means pass, red means fail."
       }
     },
     "microTeachingLabel": "Quick Lesson",

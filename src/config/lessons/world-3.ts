@@ -157,7 +157,7 @@ export const LESSON_3_3: LessonDefinition = {
     {
       id: 'step-3',
       type: 'activity',
-      activityType: 'interactive',
+      activityType: 'sandbox',
       activityConfig: {
         type: 'shift-xor-combine',
         showBitVisualization: true,

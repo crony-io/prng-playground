@@ -25,7 +25,7 @@ export const LESSON_2_5_1: LessonDefinition = {
       type: 'micro-teaching',
       microTeaching: {
         conceptKey: 'learn.microTeaching.binarySearch.concept',
-        visualType: 'counting',
+        visualType: 'binary-search',
         contentKey: 'learn.microTeaching.binarySearch.content',
         insightKey: 'learn.microTeaching.binarySearch.insight',
       },
