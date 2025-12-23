@@ -205,7 +205,7 @@ export const LESSON_3_4: LessonDefinition = {
       type: 'micro-teaching',
       microTeaching: {
         conceptKey: 'learn.microTeaching.xorshift.concept',
-        visualType: 'xor-comparison',
+        visualType: 'xorshift',
         contentKey: 'learn.microTeaching.xorshift.content',
         insightKey: 'learn.microTeaching.xorshift.insight',
       },

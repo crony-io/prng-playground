@@ -1047,7 +1047,17 @@
       "xorshift": {
         "concept": "The Xorshift Algorithm",
         "content": "George Marsaglia discovered in 2003 that combining just THREE operations (shift left, shift right, XOR) in the right order creates surprisingly good randomness. No multiplication needed!",
-        "insight": "Xorshift proves that SIMPLE operations combined cleverly can rival complex algorithms. The magic is in the specific shift amounts!"
+        "insight": "Xorshift proves that SIMPLE operations combined cleverly can rival complex algorithms. The magic is in the specific shift amounts!",
+        "initialValue": "Initial Value",
+        "random": "Random",
+        "initial": "Initial",
+        "step1": "Step 1",
+        "step2": "Step 2",
+        "step3": "Step 3",
+        "result": "Result",
+        "final": "Final",
+        "nextStep": "Next Step",
+        "summary": "3 simple operations transformed the value completely!"
       },
       "binarySearch": {
         "concept": "Divide and Conquer",

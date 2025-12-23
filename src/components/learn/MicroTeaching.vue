@@ -13,6 +13,7 @@ import BinarySearchVisual from '@/components/learn/BinarySearchVisual.vue';
 import AvalancheVisual from '@/components/learn/AvalancheVisual.vue';
 import RotationMicroTeaching from '@/components/learn/RotationMicroTeaching.vue';
 import TestResultsVisual from '@/components/learn/TestResultsVisual.vue';
+import XorshiftMicroTeaching from '@/components/learn/XorshiftMicroTeaching.vue';
 
 defineProps<{
   conceptKey: string;
@@ -30,7 +31,8 @@ defineProps<{
     | 'binary-search'
     | 'avalanche'
     | 'rotation'
-    | 'test-results';
+    | 'test-results'
+    | 'xorshift';
   contentKey?: string;
   insightKey?: string;
 }>();
@@ -102,6 +104,10 @@ const { t } = useI18n();
 
       <template v-else-if="visualType === 'test-results'">
         <TestResultsVisual />
+      </template>
+
+      <template v-else-if="visualType === 'xorshift'">
+        <XorshiftMicroTeaching />
       </template>
     </div>
 

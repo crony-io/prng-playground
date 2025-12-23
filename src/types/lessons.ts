@@ -37,7 +37,8 @@ export type MicroTeachingVisualType =
   | 'binary-search'
   | 'avalanche'
   | 'rotation'
-  | 'test-results';
+  | 'test-results'
+  | 'xorshift';
 
 /**
  * Micro-teaching content for prerequisite concepts
